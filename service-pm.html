@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Project Management – NFD Korea</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+:root{
+  --navy:#1A2B52; --navy-d:#0D1A36; --navy-m:#243C73;
+  --blue:#1565C0; --blue-b:#1976D2; --sky:#E8F0FE; --sky-b:#C5D8FB;
+  --white:#FFFFFF; --off:#F7F8FA; --border:#DDE3EF;
+  --gray-t:#4A5568; --gray-m:#8A97AE;
+  --orange:#F08C2E; --orange-l:#FFF5EC;
+  --radius:10px;
+  --ff-en:'DM Sans',sans-serif;
+  --ff-ko:'Noto Sans KR',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff-en);background:var(--white);color:var(--navy);overflow-x:hidden;line-height:1.7;font-size:16px;}
+img{display:block;max-width:100%;object-fit:cover;}
+a{text-decoration:none;color:inherit;}
+
+/* NAV */
+#nav{position:fixed;inset:0 0 auto 0;z-index:999;height:70px;display:flex;align-items:center;padding:0 60px;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+#nav.scrolled{box-shadow:0 4px 24px rgba(26,43,82,.08);}
+.n-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.n-badge{width:38px;height:38px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--ff-en);font-size:12px;font-weight:700;color:var(--white);letter-spacing:1px;}
+.n-name{font-family:var(--ff-en);font-size:15px;font-weight:700;color:var(--navy);letter-spacing:.5px;}
+.n-sub{font-size:10px;color:var(--gray-m);margin-top:1px;}
+.n-menu{list-style:none;display:flex;align-items:center;gap:4px;margin:0 auto;}
+.n-menu>li{position:relative;}
+.n-menu>li>a{font-family:var(--ff-en);font-size:17px;font-weight:600;color:var(--gray-t);padding:10px 16px;border-radius:8px;display:flex;align-items:center;gap:5px;transition:color .2s,background .2s;white-space:nowrap;}
+.n-menu>li>a:hover,.n-menu>li>a.active{color:var(--navy);background:var(--off);}
+.n-menu>li>a.active{font-weight:700;color:var(--blue);}
+.n-menu>li>a.has-sub::after{content:'';display:inline-block;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-3px;opacity:.6;}
+.sub-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--white);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 24px rgba(26,43,82,.1);min-width:160px;overflow:hidden;z-index:100;}
+.n-menu>li:hover .sub-menu{display:block;}
+.sub-menu a{display:block;padding:11px 18px;font-size:13.5px;font-weight:400;color:var(--gray-t);transition:background .15s,color .15s;white-space:nowrap;}
+.sub-menu a:hover{background:var(--off);color:var(--navy);}
+.n-cta{flex-shrink:0;display:flex;align-items:center;gap:7px;padding:10px 22px;border-radius:7px;background:var(--navy);color:var(--white);font-family:var(--ff-en);font-size:13.5px;font-weight:600;transition:background .2s;margin-left:8px;}
+.n-cta:hover{background:var(--blue);}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:7px;font-family:var(--ff-en);font-size:15px;font-weight:600;transition:all .22s;cursor:pointer;border:2px solid transparent;}
+.btn-navy{background:var(--navy);color:var(--white);padding:14px 32px;border-color:var(--navy);}
+.btn-navy:hover{background:var(--navy-m);transform:translateY(-2px);}
+.btn-wh{background:transparent;color:var(--white);padding:12px 28px;border:2px solid rgba(255,255,255,.4);}
+.btn-wh:hover{border-color:var(--white);background:var(--white);color:var(--navy);}
+
+/* PAGE HERO */
+.ph{margin-top:70px;height:460px;position:relative;display:flex;align-items:center;overflow:hidden;}
+.ph-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.ph-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,16,38,.92) 0%,rgba(8,16,38,.6) 55%,rgba(8,16,38,.15) 100%);}
+.ph-c{position:relative;z-index:2;padding:0 60px;max-width:1280px;width:100%;margin:0 auto;}
+.ph-bc{display:flex;align-items:center;gap:8px;font-family:var(--ff-en);font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:18px;flex-wrap:wrap;}
+.ph-bc a{color:rgba(255,255,255,.5);transition:color .2s;}
+.ph-bc a:hover{color:var(--white);}
+.ph-bc span{color:rgba(255,255,255,.25);}
+.ph-tag{display:inline-block;padding:5px 14px;border-radius:4px;background:rgba(240,140,46,.45);border:1px solid rgba(255,180,80,.4);font-family:var(--ff-en);font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:16px;}
+.ph-h1{font-size:clamp(36px,4vw,58px);font-weight:900;color:var(--white);letter-spacing:-1px;line-height:1.12;margin-bottom:18px;}
+.ph-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.65);max-width:540px;line-height:1.8;}
+
+/* SECTIONS */
+.sec{padding:96px 60px;}
+.sec.alt{background:var(--off);}
+.sec-inner{max-width:1280px;margin:0 auto;}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.eyebrow-bar{width:24px;height:2.5px;background:var(--blue);border-radius:2px;flex-shrink:0;}
+.eyebrow span{font-family:var(--ff-en);font-size:11.5px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--blue);}
+.h2{font-size:clamp(28px,3vw,42px);font-weight:900;line-height:1.2;letter-spacing:-.5px;color:var(--navy);margin-bottom:18px;}
+.lead{font-size:17px;font-weight:300;line-height:1.9;color:var(--gray-t);}
+
+/* OVERVIEW */
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.overview-img{border-radius:20px;overflow:hidden;box-shadow:0 24px 56px rgba(26,43,82,.14);}
+.overview-img img{width:100%;height:400px;object-fit:cover;}
+
+/* STRENGTH CARDS */
+.strength-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
+.str-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px 30px;position:relative;overflow:hidden;transition:transform .28s,box-shadow .28s,border-color .28s;}
+.str-card::after{content:'';position:absolute;inset:auto 0 0 0;height:3px;background:var(--orange);opacity:0;transition:opacity .28s;}
+.str-card:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(26,43,82,.12);border-color:rgba(240,140,46,.22);}
+.str-card:hover::after{opacity:1;}
+.str-card-icon{width:52px;height:52px;border-radius:12px;background:var(--orange-l);display:flex;align-items:center;justify-content:center;margin-bottom:22px;}
+.str-card-icon svg{width:26px;height:26px;stroke:var(--orange);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.str-card h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:12px;}
+.str-card p{font-size:14.5px;font-weight:300;color:var(--gray-t);line-height:1.85;}
+.str-list{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px;}
+.str-list li{font-size:14px;font-weight:300;color:var(--gray-t);padding-left:16px;position:relative;line-height:1.6;}
+.str-list li::before{content:'›';position:absolute;left:0;color:var(--orange);font-weight:700;}
+
+/* EXPERT BAND */
+.expert-band{background:linear-gradient(135deg,#1E3A6E 0%,#0D1A36 100%);padding:72px 60px;}
+.expert-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.expert-text h2{color:var(--white);font-size:clamp(26px,3vw,40px);font-weight:900;line-height:1.3;margin-bottom:20px;}
+.expert-text p{color:rgba(255,255,255,.6);font-size:16px;font-weight:300;line-height:1.9;}
+.expert-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.es-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px 24px;}
+.es-num{font-family:var(--ff-en);font-size:42px;font-weight:900;color:var(--white);line-height:1;margin-bottom:6px;}
+.es-num span{font-size:20px;font-weight:500;opacity:.7;}
+.es-label{font-size:13px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.5;}
+
+/* PHASE TIMELINE */
+.phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.phase-col{padding:36px 28px;border-right:1px solid var(--border);position:relative;background:var(--white);transition:background .25s,transform .25s,box-shadow .25s;}
+.phase-col:last-child{border-right:none;}
+.phase-col:hover{background:var(--off);transform:translateY(-4px);box-shadow:0 16px 32px rgba(26,43,82,.09);z-index:1;}
+.phase-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--blue);color:var(--white);font-family:var(--ff-en);font-size:13px;font-weight:700;margin-bottom:16px;}
+.phase-col h4{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px;}
+.phase-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.phase-list li{font-size:13.5px;font-weight:300;color:var(--gray-t);padding-left:14px;position:relative;line-height:1.6;}
+.phase-list li::before{content:'·';position:absolute;left:0;color:var(--blue);font-weight:900;font-size:16px;line-height:1.3;}
+
+/* QUOTE BAND */
+.quote-band{background:linear-gradient(135deg,var(--navy-d) 0%,var(--navy-m) 100%);padding:72px 60px;text-align:center;}
+.quote-band blockquote{font-size:clamp(18px,2.2vw,26px);font-weight:700;color:var(--white);line-height:1.55;max-width:860px;margin:0 auto;letter-spacing:-.3px;}
+.quote-band blockquote::before{content:'"';font-size:80px;color:rgba(255,255,255,.12);font-family:Georgia,serif;display:block;line-height:.6;margin-bottom:16px;}
+
+/* CTA BAND */
+.cta-band{padding:80px 60px;display:flex;align-items:center;justify-content:space-between;gap:40px;background:var(--blue);}
+.cta-band h2{font-size:clamp(24px,3vw,38px);font-weight:900;color:var(--white);line-height:1.3;max-width:560px;}
+.cta-band-btns{display:flex;gap:14px;flex-shrink:0;}
+
+/* FOOTER */
+footer{background:var(--navy-d);padding:60px 60px 36px;}
+.ft-inner{max-width:1280px;margin:0 auto;}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:36px;}
+.ft-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.ft-b{width:38px;height:38px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-family:var(--ff-en);font-size:12px;font-weight:700;color:var(--white);}
+.ft-n{font-family:var(--ff-en);font-size:15px;font-weight:700;color:var(--white);}
+.ft-s{font-size:10px;color:rgba(255,255,255,.3);margin-top:1px;}
+.ft-tg{font-size:13px;font-weight:300;color:rgba(255,255,255,.3);line-height:1.75;max-width:260px;}
+.ft-nav{display:flex;gap:56px;}
+.ft-col h5{font-family:var(--ff-en);font-size:10.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#7ABEFF;margin-bottom:16px;}
+.ft-col ul{list-style:none;}
+.ft-col ul li{margin-bottom:9px;}
+.ft-col ul li a{font-size:14px;font-weight:300;color:rgba(255,255,255,.38);transition:color .2s;}
+.ft-col ul li a:hover{color:var(--white);}
+.ft-btm{display:flex;justify-content:space-between;align-items:center;}
+.ft-btm p{font-size:12.5px;color:rgba(255,255,255,.22);font-weight:300;}
+
+/* REVEAL */
+.r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+.r.on{opacity:1;transform:none;}
+.rl{opacity:0;transform:translateX(-28px);transition:opacity .65s ease,transform .65s ease;}
+.rl.on{opacity:1;transform:none;}
+.rr{opacity:0;transform:translateX(28px);transition:opacity .65s ease,transform .65s ease;}
+.rr.on{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:1200px){
+  #nav{padding:0 36px;}.sec{padding:80px 36px;}.ph-c{padding:0 36px;}.cta-band{padding:72px 36px;}
+  .expert-band{padding:60px 36px;}
+}
+@media(max-width:1024px){
+  .n-menu{display:none;}#nav{padding:0 24px;}.sec{padding:72px 24px;}.ph-c{padding:0 24px;}
+  .overview-grid{grid-template-columns:1fr;}.strength-grid{grid-template-columns:1fr 1fr;}
+  .phase-grid{grid-template-columns:1fr 1fr;}.phase-col{border-bottom:1px solid var(--border);}
+  .expert-inner{grid-template-columns:1fr;}.expert-band{padding:60px 24px;}
+  .cta-band{flex-direction:column;text-align:center;padding:60px 24px;}
+  footer{padding:48px 24px 28px;}.ft-top{flex-direction:column;gap:40px;}.ft-nav{flex-wrap:wrap;gap:28px;}
+}
+@media(max-width:768px){
+  .ph{height:360px;}.strength-grid{grid-template-columns:1fr;}.phase-grid{grid-template-columns:1fr;}
+  .expert-stats{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head><body>
+
+<nav id="nav">
+  <a href="index.html" class="n-logo">
+    <div class="n-badge">NFD</div>
+    <div><div class="n-name">NFD KOREA</div><div class="n-sub">Data Center Partner</div></div>
+  </a>
+  <ul class="n-menu">
+    <li><a href="about-us.html" class="has-sub">About</a>
+      <div class="sub-menu">
+        <a href="about-us.html">About Us</a>
+        <a href="mission-vision.html">Mission &amp; Vision</a>
+        <a href="history.html">History</a>
+        <a href="org.html">Organization</a>
+      </div>
+    </li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="careers-values.html" class="has-sub">Careers</a>
+      <div class="sub-menu">
+        <a href="careers-values.html">Our Values</a>
+        <a href="careers.html">Open Roles</a>
+      </div>
+    </li>
+    <li><a href="news.html">News</a></li>
+  </ul>
+  <a href="contact.html" class="n-cta">Contact Us <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</nav>
+
+<!-- HERO -->
+<div class="ph">
+  <div class="ph-bg" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80&fit=crop&auto=format');"></div>
+  <div class="ph-ov"></div>
+  <div class="ph-c">
+    <div class="ph-bc">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="services.html">Services</a><span>/</span>
+      <span style="color:rgba(255,255,255,.75)">Project Management</span>
+    </div>
+    <div class="ph-tag">03 — Project Management</div>
+    <h1 class="ph-h1">Phase-by-Phase Project<br>Management (PM) Services</h1>
+    <p class="ph-sub">Specialized PM professionals optimized for each project phase — development, design, construction, and operations.</p>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="overview-grid">
+      <div class="rl">
+        <div class="eyebrow"><div class="eyebrow-bar"></div><span>Overview</span></div>
+        <h2 class="h2">Full-Lifecycle Data Center PM<br>Delivered by One Unified Team</h2>
+        <p class="lead">NFD Korea directly executes PM services across the entire project lifecycle — from development through operations — within a single, unified organization. By maintaining consistent goals and strategy throughout every phase, we support the successful delivery of our clients' projects.</p>
+        <p class="lead" style="margin-top:12px;">Our specialists in architecture, civil, electrical, mechanical, and controls engineering — with an average of 22 years' experience — take full accountability for meeting cost, quality, and schedule targets.</p>
+      </div>
+      <div class="rr">
+        <div class="overview-img">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80&fit=crop&auto=format" alt="Project Management">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTH CARDS -->
+<section class="sec alt">
+  <div class="sec-inner">
+    <div class="r" style="text-align:center;max-width:640px;margin:0 auto 0;">
+      <div class="eyebrow" style="justify-content:center;"><span>Core Strengths</span></div>
+      <h2 class="h2">3 Core PM Strengths</h2>
+      <p class="lead">Discipline-specific expertise, integrated management systems, and proactive risk control — together, they deliver your project.</p>
+    </div>
+    <div class="strength-grid">
+      <div class="str-card r">
+        <div class="str-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Discipline-Specific Expert Team</h3>
+        <p>A PM team of seasoned, multi-year specialists leads your project from front to finish.</p>
+        <ul class="str-list">
+          <li>In-house experts across architecture, civil, electrical, mechanical, and controls</li>
+          <li>Average 22+ years of experience per discipline</li>
+          <li>Hands-on experience across all IDC development, design, and construction phases</li>
+          <li>Efficient management of all project stakeholders</li>
+        </ul>
+      </div>
+      <div class="str-card r" style="transition-delay:.1s">
+        <div class="str-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Cost, Quality &amp; Schedule Control</h3>
+        <p>We operate an integrated management system to achieve our clients' cost, quality, and schedule targets without compromise.</p>
+        <ul class="str-list">
+          <li>Consistent goals and strategy maintained by a single unified organization</li>
+          <li>Proactive review of design changes (VE/VO) and cost impact analysis</li>
+          <li>Progress vs. plan monitoring with early corrective action</li>
+          <li>Owner-side quality inspection and acceptance framework</li>
+        </ul>
+      </div>
+      <div class="str-card r" style="transition-delay:.2s">
+        <div class="str-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Proactive Risk Management</h3>
+        <p>We identify and manage phase-specific risks in advance to keep the project on schedule and on target.</p>
+        <ul class="str-list">
+          <li>Phase-by-phase risk identification and mitigation planning</li>
+          <li>Integrated management of permitting, procurement, and construction risks</li>
+          <li>Structured stakeholder communication framework</li>
+          <li>Early operational readiness (OR) review and transition support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERT BAND -->
+<div class="expert-band">
+  <div class="expert-inner">
+    <div class="expert-text r">
+      <div class="eyebrow" style="margin-bottom:16px;"><div class="eyebrow-bar" style="background:#7ABEFF;"></div><span style="color:#7ABEFF;">Our Experts</span></div>
+      <h2>An Industry-Leading<br>PM Expert Organization</h2>
+      <p>NFD Korea's PM organization is composed of specialists with an average of 22+ years of hands-on experience spanning architecture, civil, electrical, mechanical, and controls engineering. A single unified team takes full ownership from development to operations — ensuring consistent quality at every stage.</p>
+    </div>
+    <div class="expert-stats r" style="transition-delay:.15s">
+      <div class="es-item">
+        <div class="es-num">22<span>yr+</span></div>
+        <div class="es-label">Avg. experience<br>per discipline</div>
+      </div>
+      <div class="es-item">
+        <div class="es-num">5</div>
+        <div class="es-label">Engineering disciplines<br>(Arch · Civil · Elec · Mech · Controls)</div>
+      </div>
+      <div class="es-item">
+        <div class="es-num">4</div>
+        <div class="es-label">Project phases<br>managed end-to-end</div>
+      </div>
+      <div class="es-item">
+        <div class="es-num">1</div>
+        <div class="es-label">Single unified team<br>integrated management</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE TIMELINE -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="r" style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="eyebrow" style="justify-content:center;"><span>Service Phases</span></div>
+      <h2 class="h2">Phase-by-Phase PM Service Details</h2>
+      <p class="lead">We systematically manage all four phases — from development through operations.</p>
+    </div>
+    <div class="phase-grid r" style="margin-top:56px;">
+      <div class="phase-col">
+        <div class="phase-num">1</div>
+        <h4>Development Phase</h4>
+        <ul class="phase-list">
+          <li>Site selection and Test-Fit review</li>
+          <li>Preliminary Due Diligence (Pre DD)</li>
+          <li>Target tenant Technical DD support</li>
+          <li>Business structure optimization planning</li>
+          <li>Budget and investment model development</li>
+        </ul>
+      </div>
+      <div class="phase-col">
+        <div class="phase-num">2</div>
+        <h4>Design &amp; Permitting Phase</h4>
+        <ul class="phase-list">
+          <li>Project planning and requirements definition</li>
+          <li>Cost estimation and budget planning</li>
+          <li>Design and permitting optimization management</li>
+          <li>Contractor and key equipment procurement support</li>
+          <li>Long-Lead Equipment (LLE) selection and contract management</li>
+        </ul>
+      </div>
+      <div class="phase-col">
+        <div class="phase-num">3</div>
+        <h4>Construction Phase</h4>
+        <ul class="phase-list">
+          <li>Schedule and construction cost management</li>
+          <li>Design change and VE/VO management</li>
+          <li>Permitting change coordination</li>
+          <li>Key equipment delivery and commissioning management</li>
+          <li>Operational Readiness (OR) planning</li>
+        </ul>
+      </div>
+      <div class="phase-col">
+        <div class="phase-num">4</div>
+        <h4>Operations Phase</h4>
+        <ul class="phase-list">
+          <li>Data center operations management</li>
+          <li>Integrated facility, security, and communications management</li>
+          <li>Operations cost and efficiency management</li>
+          <li>Tenant interface management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-band">
+  <blockquote class="r">
+    Full-lifecycle data center PM — executed directly by one unified team.<br>
+    <span style="display:block;font-size:.65em;font-weight:300;opacity:.65;margin-top:12px;">Consistent goals and strategy across every phase, supporting the successful delivery of your project.</span>
+  </blockquote>
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div style="max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+    <h2>Speak with our experts<br>about PM Services.</h2>
+    <div class="cta-band-btns">
+      <a href="contact.html" class="btn btn-wh">Contact Us →</a>
+      <a href="services.html" class="btn" style="background:#fff;color:var(--blue);border-color:#fff;padding:14px 36px;">View All Services</a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="ft-inner">
+  <div class="ft-top"><div>
+    <div class="ft-logo-row"><div class="ft-b">NFD</div><div><div class="ft-n">NFD KOREA</div><div class="ft-s">Data Center Consulting Partner</div></div></div>
+    <p class="ft-tg">We build the future of sustainable<br>digital infrastructure through expertise and trust.</p>
+  </div>
+  <div class="ft-nav">
+    <div class="ft-col"><h5>Company</h5><ul><li><a href="about-us.html">About Us</a></li><li><a href="mission-vision.html">Mission &amp; Vision</a></li><li><a href="history.html">History</a></li><li><a href="org.html">Organization</a></li></ul></div>
+    <div class="ft-col"><h5>Services</h5><ul><li><a href="service-development.html">Development Consulting</a></li><li><a href="service-engineering.html">Design Engineering</a></li><li><a href="service-pm.html">PM Services</a></li><li><a href="service-operations.html">Operations Management</a></li></ul></div>
+    <div class="ft-col"><h5>Careers</h5><ul><li><a href="careers-values.html">Our Values</a></li><li><a href="careers.html">Open Roles</a></li></ul></div>
+    <div class="ft-col"><h5>More</h5><ul><li><a href="news.html">News</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+  </div></div>
+  <div class="ft-btm"><p>© 2026 NFD Korea Co., Ltd. All rights reserved.</p><p>199-2 Nonhyun-dong, Gangnam-gu, Seoul &nbsp;|&nbsp; enquiry@nfd.kr</p></div>
+</div></footer>
+
+<script>
+const _n=document.getElementById('nav');
+if(_n)window.addEventListener('scroll',()=>_n.classList.toggle('scrolled',window.scrollY>40));
+const _o=new IntersectionObserver((e)=>{e.forEach((x,i)=>{if(x.isIntersecting){setTimeout(()=>x.target.classList.add('on'),i*60);_o.unobserve(x.target);}});},{threshold:.05,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.r,.rl,.rr').forEach(el=>_o.observe(el));
+</script>
+</body></html>
