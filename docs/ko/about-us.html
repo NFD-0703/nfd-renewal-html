@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="canonical" href="https://www.nfd.kr/ko/about-us.html">
+<link rel="alternate" hreflang="en" href="https://www.nfd.kr/en/about-us.html">
+<link rel="alternate" hreflang="ko" href="https://www.nfd.kr/ko/about-us.html">
+<link rel="alternate" hreflang="x-default" href="https://www.nfd.kr/en/about-us.html">
+<meta name="description" content="NFD Korea, nfdkorea는 서울을 기반으로 데이터센터 개발 및 운영 컨설팅을 제공하는 전문 파트너입니다.">
+<meta name="keywords" content="NFD Korea, NFDKorea, nfdkorea, 엔에프디코리아, NFD, 데이터센터, 데이터센터 컨설팅, 데이터센터 개발, IDC">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NFD Korea">
+<meta property="og:title" content="회사소개 – NFD Korea">
+<meta property="og:description" content="NFD Korea, nfdkorea는 서울을 기반으로 데이터센터 개발 및 운영 컨설팅을 제공하는 전문 파트너입니다.">
+<meta property="og:url" content="https://www.nfd.kr/ko/about-us.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.nfd.kr/#organization","name":"NFD Korea","alternateName":["NFDKorea","nfdkorea","NFD Korea Co., Ltd.","엔에프디코리아"],"url":"https://www.nfd.kr","email":"enquiry@nfd.kr","address":{"@type":"PostalAddress","streetAddress":"199-2 Nonhyun-dong","addressLocality":"Gangnam-gu","addressRegion":"Seoul","addressCountry":"KR"},"sameAs":["https://www.linkedin.com/company/nfd-home"]},{"@type":"WebSite","@id":"https://www.nfd.kr/#website","name":"NFD Korea","alternateName":["nfdkorea","NFDKorea"],"url":"https://www.nfd.kr","publisher":{"@id":"https://www.nfd.kr/#organization"},"inLanguage":"ko-KR"},{"@type":"WebPage","@id":"https://www.nfd.kr/ko/about-us.html","url":"https://www.nfd.kr/ko/about-us.html","name":"회사소개 – NFD Korea","description":"NFD Korea, nfdkorea는 서울을 기반으로 데이터센터 개발 및 운영 컨설팅을 제공하는 전문 파트너입니다.","isPartOf":{"@id":"https://www.nfd.kr/#website"},"about":{"@id":"https://www.nfd.kr/#organization"},"inLanguage":"ko-KR"}]}</script>
+
+<title>회사소개 – NFD Korea</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+:root{
+  --navy:#1A2B52; --navy-d:#0D1A36; --navy-m:#243C73;
+  --blue:#1565C0; --blue-b:#1976D2; --sky:#E8F0FE; --sky-b:#C5D8FB;
+  --white:#FFFFFF; --off:#F7F8FA; --border:#DDE3EF;
+  --gray-t:#4A5568; --gray-m:#8A97AE;
+  --radius:10px;
+  --ff-en:'DM Sans',sans-serif;
+  --ff-ko:'Noto Sans KR',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff-ko);background:var(--white);color:var(--navy);overflow-x:hidden;line-height:1.7;font-size:16px;}
+img{display:block;max-width:100%;object-fit:cover;}
+a{text-decoration:none;color:inherit;}
+
+/* ── NAV ── */
+#nav{
+  position:fixed;inset:0 0 auto 0;z-index:999;height:70px;
+  display:flex;align-items:center;padding:0 60px;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);transition:box-shadow .3s;
+}
+#nav.scrolled{box-shadow:0 4px 24px rgba(26,43,82,.08);}
+.n-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.n-badge{
+  width:38px;height:38px;border-radius:8px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-en);font-size:12px;font-weight:700;color:var(--white);letter-spacing:1px;
+}
+.n-name{font-family:var(--ff-en);font-size:15px;font-weight:700;color:var(--navy);letter-spacing:.5px;}
+.n-sub{font-size:10px;color:var(--gray-m);margin-top:1px;}
+
+/* 드롭다운 */
+.n-menu{list-style:none;display:flex;align-items:center;gap:4px;margin:0 auto;}
+.n-menu>li{position:relative;}
+.n-menu>li>a{
+  font-family:var(--ff-en);font-size:17px;font-weight:600;
+  color:var(--gray-t);padding:10px 16px;border-radius:8px;
+  display:flex;align-items:center;gap:5px;
+  transition:color .2s,background .2s;white-space:nowrap;
+}
+.n-menu>li>a:hover,.n-menu>li>a.active{color:var(--navy);background:var(--off);}
+.n-menu>li>a.active{font-weight:700;color:var(--blue);}
+/* 드롭다운 화살표 */
+.n-menu>li>a.has-sub::after{
+  content:'';display:inline-block;width:6px;height:6px;
+  border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);margin-top:-3px;opacity:.6;
+}
+/* 서브메뉴 */
+.sub-menu{
+  display:none;position:absolute;top:calc(100% + 6px);left:0;
+  background:var(--white);border:1px solid var(--border);border-radius:8px;
+  box-shadow:0 8px 24px rgba(26,43,82,.1);min-width:160px;
+  overflow:hidden;z-index:100;
+}
+.n-menu>li:hover .sub-menu{display:block;}
+.sub-menu a{
+  display:block;padding:11px 18px;font-size:13.5px;font-weight:400;
+  color:var(--gray-t);transition:background .15s,color .15s;white-space:nowrap;
+}
+.sub-menu a:hover{background:var(--off);color:var(--navy);}
+
+.n-cta{
+  flex-shrink:0;display:flex;align-items:center;gap:7px;
+  padding:10px 22px;border-radius:7px;background:var(--navy);
+  color:var(--white);font-family:var(--ff-en);font-size:13.5px;font-weight:600;
+  transition:background .2s;margin-left:8px;
+}
+.n-cta:hover{background:var(--blue);}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:7px;
+  font-family:var(--ff-en);font-size:15px;font-weight:600;
+  transition:all .22s;cursor:pointer;border:2px solid transparent;}
+.btn-primary{background:var(--blue);color:var(--white);padding:14px 32px;border-color:var(--blue);}
+.btn-primary:hover{background:var(--blue-b);transform:translateY(-2px);}
+.btn-navy{background:var(--navy);color:var(--white);padding:14px 32px;border-color:var(--navy);}
+.btn-navy:hover{background:var(--navy-m);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--navy);padding:12px 28px;border:2px solid var(--border);}
+.btn-outline:hover{border-color:var(--navy);background:var(--navy);color:var(--white);}
+.btn-wh{background:transparent;color:var(--white);padding:12px 28px;border:2px solid rgba(255,255,255,.4);}
+.btn-wh:hover{border-color:var(--white);background:var(--white);color:var(--navy);}
+.btn-sm{font-size:13px;padding:10px 22px;}
+
+/* ── SECTIONS ── */
+.sec{padding:96px 60px;}
+.sec.alt{background:var(--off);}
+.sec.dark{background:var(--navy-d);}
+.sec-inner{max-width:1280px;margin:0 auto;}
+
+/* ── SECTION HEADER ── */
+.sec-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;}
+.sec-hdr .h2{margin-bottom:0;}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.eyebrow-bar{width:24px;height:2.5px;background:var(--blue);border-radius:2px;flex-shrink:0;}
+.eyebrow span{font-family:var(--ff-en);font-size:11.5px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--blue);}
+.eyebrow.lt span{color:#7AB8FF;}.eyebrow.lt .eyebrow-bar{background:#7AB8FF;}
+.eyebrow.ctr{justify-content:center;}.eyebrow.ctr .eyebrow-bar{display:none;}
+.h2{font-size:clamp(30px,3vw,46px);font-weight:900;line-height:1.2;letter-spacing:-.5px;color:var(--navy);margin-bottom:18px;}
+.h2.wh{color:var(--white);}
+.lead{font-size:17px;font-weight:300;line-height:1.9;color:var(--gray-t);max-width:600px;}
+.lead.wh{color:rgba(255,255,255,.55);}
+
+/* ── PAGE HERO ── */
+.ph{margin-top:70px;height:420px;position:relative;display:flex;align-items:center;overflow:hidden;}
+.ph-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.ph-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,16,38,.88) 0%,rgba(8,16,38,.5) 55%,rgba(8,16,38,.1) 100%);}
+.ph-c{position:relative;z-index:2;padding:0 60px;max-width:1280px;width:100%;}
+.ph-bc{display:flex;align-items:center;gap:8px;font-family:var(--ff-en);font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:18px;flex-wrap:wrap;}
+.ph-bc a{color:rgba(255,255,255,.5);transition:color .2s;}
+.ph-bc a:hover{color:var(--white);}
+.ph-bc span{color:rgba(255,255,255,.25);}
+.ph-h1{font-size:clamp(38px,4.5vw,62px);font-weight:900;color:var(--white);letter-spacing:-1px;line-height:1.1;margin-bottom:18px;}
+.ph-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.65);max-width:560px;line-height:1.8;}
+
+/* ── CTA BAND ── */
+.cta-band{padding:80px 60px;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+.cta-band.blue{background:var(--blue);}
+.cta-band.navy{background:var(--navy-d);}
+.cta-band h2{font-size:clamp(26px,3vw,42px);font-weight:900;color:var(--white);line-height:1.25;max-width:580px;}
+.cta-band-btns{display:flex;gap:14px;flex-shrink:0;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-d);padding:60px 60px 36px;}
+.ft-inner{max-width:1280px;margin:0 auto;}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:36px;}
+.ft-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.ft-b{width:38px;height:38px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-family:var(--ff-en);font-size:12px;font-weight:700;color:var(--white);}
+.ft-n{font-family:var(--ff-en);font-size:15px;font-weight:700;color:var(--white);}
+.ft-s{font-size:10px;color:rgba(255,255,255,.3);margin-top:1px;}
+.ft-tg{font-size:13px;font-weight:300;color:rgba(255,255,255,.3);line-height:1.75;max-width:260px;}
+.ft-nav{display:flex;gap:56px;}
+.ft-col h5{font-family:var(--ff-en);font-size:10.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#7ABEFF;margin-bottom:16px;}
+.ft-col ul{list-style:none;}
+.ft-col ul li{margin-bottom:9px;}
+.ft-col ul li a{font-size:14px;font-weight:300;color:rgba(255,255,255,.38);transition:color .2s;}
+.ft-col ul li a:hover{color:var(--white);}
+.ft-btm{display:flex;justify-content:space-between;align-items:center;}
+.ft-btm p{font-size:12.5px;color:rgba(255,255,255,.22);font-weight:300;}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+.r.on{opacity:1;transform:none;}
+.rl{opacity:0;transform:translateX(-28px);transition:opacity .65s ease,transform .65s ease;}
+.rl.on{opacity:1;transform:none;}
+.rr{opacity:0;transform:translateX(28px);transition:opacity .65s ease,transform .65s ease;}
+.rr.on{opacity:1;transform:none;}
+
+/* ── CONTACT FORM (shared) ── */
+.cf{display:flex;flex-direction:column;gap:16px;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fg{display:flex;flex-direction:column;gap:7px;}
+.fg label{font-family:var(--ff-en);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-m);}
+.fg input,.fg textarea,.fg select{
+  padding:13px 16px;background:var(--off);border:1px solid var(--border);
+  border-radius:7px;color:var(--navy);font-family:var(--ff-ko);font-size:15px;
+  outline:none;width:100%;resize:none;transition:border-color .2s,background .2s;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--blue);background:var(--white);}
+.fg textarea{height:110px;}
+.cf-btn{
+  background:var(--navy);color:var(--white);border:none;border-radius:7px;
+  padding:15px;font-family:var(--ff-en);font-size:15px;font-weight:700;
+  cursor:pointer;transition:background .2s,transform .2s;
+}
+.cf-btn:hover{background:var(--blue);transform:translateY(-1px);}
+
+/* ── PILL ── */
+.pill{display:inline-block;padding:4px 12px;border-radius:4px;font-family:var(--ff-en);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.pill-blue{background:var(--blue);color:var(--white);}
+.pill-gh{background:rgba(255,255,255,.15);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.25);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1200px){
+  :root{}
+  #nav{padding:0 36px;}
+  .sec{padding:80px 36px;}
+  .ph-c{padding:0 36px;}
+  .cta-band{padding:72px 36px;}
+  footer{padding:52px 36px 32px;}
+  .ft-nav{gap:36px;}
+}
+@media(max-width:1024px){
+  .n-menu{display:none;}
+  #nav{padding:0 24px;}
+  .sec{padding:72px 24px;}
+  .ph-c{padding:0 24px;}
+  .cta-band{flex-direction:column;text-align:center;padding:60px 24px;}
+  footer{padding:48px 24px 28px;}
+  .ft-top{flex-direction:column;gap:40px;}
+  .ft-nav{flex-wrap:wrap;gap:28px;}
+}
+@media(max-width:768px){
+  .sec{padding:60px 20px;}
+  .ph{height:320px;}
+  .ph-h1{font-size:clamp(32px,6vw,46px);}
+  .cf-row{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .sec{padding:48px 16px;}
+}
+</style><style>
+.ph{margin-top:70px;height:420px;position:relative;display:flex;align-items:center;overflow:hidden;}
+.ph-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.ph-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,16,38,.88) 0%,rgba(8,16,38,.5) 55%,rgba(8,16,38,.1) 100%);}
+.ph-c{position:relative;z-index:2;padding:0 60px;max-width:1280px;width:100%;}
+.ph-bc{display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:18px;flex-wrap:wrap;}
+.ph-bc a{color:rgba(255,255,255,.5);transition:color .2s;}.ph-bc a:hover{color:#fff;}
+.ph-bc span{color:rgba(255,255,255,.25);}
+.ph-h1{font-size:clamp(38px,4.5vw,62px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:18px;}
+.ph-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.65);max-width:560px;line-height:1.8;}
+.cta-band{padding:80px 60px;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+.cta-band.blue{background:#1565C0;}.cta-band.navy{background:#0D1A36;}
+.cta-band h2{font-size:clamp(26px,3vw,42px);font-weight:900;color:#fff;line-height:1.25;max-width:580px;}
+.cta-band-btns{display:flex;gap:14px;flex-shrink:0;}
+@media(max-width:1200px){.ph-c{padding:0 36px;}.cta-band{padding:72px 36px;}}
+@media(max-width:1024px){.ph{height:320px;}.cta-band{flex-direction:column;text-align:center;padding:60px 24px;}}
+</style><style>
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center;}
+.partner-logos{display:grid;grid-template-columns:repeat(2,minmax(220px,320px));justify-content:center;gap:28px;align-items:center;}
+.partner-card{
+  background:#fff;border:1px solid #DDE3EF;border-radius:18px;padding:28px 30px;
+  box-shadow:0 18px 40px rgba(26,43,82,.08);text-align:center;
+}
+.partner-logo-wrap{height:72px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.partner-logo-wrap img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}
+.cta-band-btns .btn{padding:14px 34px;min-height:52px;}
+@media(max-width:1024px){.about-split{grid-template-columns:1fr;gap:40px;}}
+@media(max-width:768px){.partner-logos{grid-template-columns:1fr;}}
+</style>
+
+<style>
+.n-lang{display:flex;align-items:center;gap:3px;margin-left:10px;border:1px solid var(--border,#DDE3EF);border-radius:7px;padding:3px;background:rgba(255,255,255,.72);flex-shrink:0}
+.n-lang a{font-family:var(--ff-en,'DM Sans',sans-serif);font-size:12px;font-weight:700;line-height:1;color:var(--gray-t,#4A5568);padding:7px 9px;border-radius:5px;text-decoration:none}
+.n-lang a.active{background:var(--navy,#1A2B52);color:#fff}
+.n-menu>li .sub-menu{top:100%}
+.n-menu>li.open .sub-menu{display:block}
+@media(max-width:1024px){.n-lang{margin-left:auto}.n-cta{display:none}}
+</style>
+
+</head><body>
+<nav id="nav">
+  <a href="index.html" class="n-logo">
+    <div class="n-badge">NFD</div>
+    <div>
+      <div class="n-name">NFD KOREA</div>
+      <div class="n-sub">데이터센터 파트너</div>
+    </div>
+  </a>
+  <ul class="n-menu">
+    <li><a href="about-us.html" class="active has-sub">회사소개</a>
+      <div class="sub-menu">
+        <a href="about-us.html">회사소개</a>
+        <a href="mission-vision.html">미션 & 비전</a>
+        <a href="history.html">연혁</a>
+        <a href="org.html">조직도</a>
+      </div>
+    </li>
+    <li><a href="services.html" class="">서비스</a></li>
+    <li><a href="projects.html" class="">프로젝트</a></li>
+    <li><a href="careers-values.html" class=" has-sub">채용</a>
+      <div class="sub-menu">
+        <a href="careers-values.html">인재상</a>
+        <a href="careers.html">채용공고</a>
+      </div>
+    </li>
+    <li><a href="news.html" class="">뉴스</a></li>
+  </ul>
+  <a href="contact.html" class="n-cta">문의하기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <div class="n-lang" aria-label="Language"><a class="" data-lang-choice="en" href="../en/about-us.html" hreflang="en">EN</a><a class="active" data-lang-choice="ko" href="../ko/about-us.html" hreflang="ko">KO</a></div>
+</nav>
+
+
+<div class="ph">
+  <div class="ph-bg" style="background-image:url('../images/remote/unsplash-photo-1486325212027-8081e485255e-w1600.webp');"></div>
+  <div class="ph-ov"></div>
+  <div class="ph-c">
+    <div class="ph-bc"><a href="index.html">홈</a><span>/</span><span style="color:rgba(255,255,255,.75)">회사소개</span></div>
+    <h1 class="ph-h1">회사소개</h1>
+    <p class="ph-sub">A trusted partner for data center development and operations consulting, built on expertise and execution.</p>
+  </div>
+</div>
+
+<section class="sec"><div class="sec-inner">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center;" class="about-split">
+    <div class="rl">
+      <div style="border-radius:12px;overflow:hidden;height:500px;">
+        <img src="../images/remote/unsplash-photo-1560732488-6b0df240254a-w900.webp" alt="Data center" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.background='linear-gradient(135deg,#0D1A36,#243C73)';this.removeAttribute('src')">
+      </div>
+    </div>
+    <div class="rr">
+      <div class="eyebrow" style="margin-bottom:18px;"><div class="eyebrow-bar"></div><span>CEO Message</span></div>
+      <h2 class="h2" style="font-size:clamp(28px,3vw,42px);margin-bottom:8px;">Drive Your Future</h2>
+      <p style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:500;color:#1565C0;margin-bottom:28px;">with Next Frontier Drive</p>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <p style="font-size:16px;font-weight:300;color:#4A5568;line-height:1.95;">NFD Korea aims to be a trusted business partner in data center development and operations consulting, built on <strong style="font-weight:700;color:#1A2B52;">expertise and innovation</strong>.</p>
+        <p style="font-size:16px;font-weight:300;color:#4A5568;line-height:1.95;">We place our clients' value and business success first, delivering optimal strategies and solutions tailored to the data center industry. In a rapidly evolving digital infrastructure environment, we offer practical answers to the complex challenges faced by investors and clients.</p>
+        <p style="font-size:16px;font-weight:300;color:#4A5568;line-height:1.95;">From site selection and development strategy to customer acquisition, design management, construction management, and operational efficiency, we provide <strong style="font-weight:700;color:#1A2B52;">expert services across the full lifecycle</strong> of the data center.</p>
+      </div>
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid #DDE3EF;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;color:#1565C0;letter-spacing:.5px;">NFD Korea Co., Ltd.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec alt"><div class="sec-inner">
+  <div class="r" style="text-align:center;max-width:640px;margin:0 auto 56px;">
+    <div class="eyebrow ctr" style="margin-bottom:14px;"><span>Our Clients</span></div>
+    <h2 class="h2">Our Partners</h2>
+    <p style="font-size:17px;font-weight:300;color:#4A5568;line-height:1.85;">We work alongside global investors and data center operators on high-value infrastructure projects.</p>
+  </div>
+  <div class="partner-logos r">
+    <div class="partner-card">
+      <div class="partner-logo-wrap"><img src="../images/client-warburg-pincus.webp" alt="Warburg Pincus"></div>
+      <p style="font-size:14px;color:#8A97AE;">Global Private Equity · Investor</p>
+    </div>
+    <div class="partner-card">
+      <div class="partner-logo-wrap"><img src="../images/client-dcconnects.webp" alt="DCConnects"></div>
+      <p style="font-size:14px;color:#8A97AE;">Data Center Operator · Partner</p>
+    </div>
+  </div>
+</div></section>
+
+<div class="cta-band blue r" style="margin:0;">
+  <div class="sec-inner" style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+    <h2>Start your next project<br>with NFD Korea.</h2>
+    <div class="cta-band-btns">
+      <a href="contact.html" class="btn btn-wh">문의하기 →</a>
+      <a href="services.html" class="btn" style="background:#fff;color:#1565C0;border-color:#fff;padding:14px 36px;min-height:52px;">View 서비스</a>
+    </div>
+  </div>
+</div>
+<footer><div class="ft-inner">
+  <div class="ft-top">
+    <div>
+      <div class="ft-logo-row"><div class="ft-b">NFD</div><div><div class="ft-n">NFD KOREA</div><div class="ft-s">데이터센터 컨설팅 파트너</div></div></div>
+      <p class="ft-tg">전문성과 신뢰를 바탕으로<br>지속 가능한 디지털 인프라의 미래를 만듭니다.</p>
+    </div>
+    <div class="ft-nav">
+      <div class="ft-col"><h5>회사</h5><ul>
+        <li><a href="about-us.html">회사소개</a></li>
+        <li><a href="mission-vision.html">미션 & 비전</a></li>
+        <li><a href="history.html">연혁</a></li>
+        <li><a href="org.html">조직도</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>서비스</h5><ul>
+        <li><a href="service-development.html">개발 컨설팅</a></li>
+        <li><a href="service-engineering.html">설계 엔지니어링</a></li>
+        <li><a href="service-pm.html">PM 서비스</a></li>
+        <li><a href="service-operations.html">운영 관리</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>채용</h5><ul>
+        <li><a href="careers-values.html">인재상</a></li>
+        <li><a href="careers.html">채용공고</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>더보기</h5><ul>
+        <li><a href="news.html">뉴스</a></li>
+        <li><a href="contact.html">문의하기</a></li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="ft-btm"><p>© 2026 NFD Korea Co., Ltd. All rights reserved.</p><p>199-2 Nonhyun-dong, Gangnam-gu, Seoul &nbsp;|&nbsp; enquiry@nfd.kr</p></div>
+</div></footer>
+
+<script>
+const _n=document.getElementById('nav');
+if(_n)window.addEventListener('scroll',()=>_n.classList.toggle('scrolled',window.scrollY>40));
+const _o=new IntersectionObserver((e)=>{e.forEach((x,i)=>{if(x.isIntersecting){setTimeout(()=>x.target.classList.add('on'),i*60);_o.unobserve(x.target);}});},{threshold:.05,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.r,.rl,.rr').forEach(el=>_o.observe(el));
+</script>
+
+<script>
+document.querySelectorAll('[data-lang-choice]').forEach((link)=>{
+  link.addEventListener('click',()=>localStorage.setItem('nfd_lang',link.dataset.langChoice));
+});
+let navCloseTimer;
+const closeOpenNavItems = (exceptItem) => {
+  document.querySelectorAll('.n-menu>li.open').forEach((openItem)=>{
+    if(openItem !== exceptItem) openItem.classList.remove('open');
+  });
+};
+document.querySelectorAll('.n-menu>li').forEach((item)=>{
+  if(!item.querySelector('.sub-menu')) return;
+  item.addEventListener('mouseenter',()=>{
+    clearTimeout(navCloseTimer);
+    closeOpenNavItems(item);
+    item.classList.add('open');
+  });
+  item.addEventListener('mouseleave',()=>{
+    clearTimeout(navCloseTimer);
+    navCloseTimer = setTimeout(()=>item.classList.remove('open'),180);
+  });
+});
+document.querySelectorAll('.n-menu>li>a.has-sub').forEach((trigger)=>{
+  trigger.addEventListener('click',(event)=>{
+    event.preventDefault();
+    const item = trigger.closest('li');
+    const isOpen = item.classList.contains('open');
+    clearTimeout(navCloseTimer);
+    closeOpenNavItems(item);
+    item.classList.toggle('open',!isOpen);
+  });
+});
+document.addEventListener('click',(event)=>{
+  if(!event.target.closest('.n-menu')) {
+    closeOpenNavItems();
+  }
+});
+</script>
+
+</body></html>

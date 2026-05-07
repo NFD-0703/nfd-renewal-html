@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,follow">
+<link rel="alternate" hreflang="en" href="https://www.nfd.kr/en/index.html">
+<link rel="alternate" hreflang="ko" href="https://www.nfd.kr/ko/index.html">
+<link rel="alternate" hreflang="x-default" href="https://www.nfd.kr/en/index.html">
+<title>Home – NFD Korea</title>
+<script>
+(function(){
+  var page = "index.html";
+  var saved = localStorage.getItem("nfd_lang");
+  var browser = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+  var tz = "";
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch(e) {}
+  var lang = saved || (/^ko\b/i.test(browser) || tz === "Asia/Seoul" ? "ko" : "en");
+  if (lang !== "ko" && lang !== "en") lang = "en";
+  location.replace("./" + lang + "/" + page + location.search + location.hash);
+}());
+</script>
+</head>
+<body>
+<p>Redirecting to <a href="./en/index.html">English</a> / <a href="./ko/index.html">Korean</a>.</p>
+</body>
+</html>
