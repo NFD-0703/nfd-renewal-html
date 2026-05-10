@@ -225,6 +225,7 @@ KO_TEXT = {
     "Contact": "문의",
     "Submit": "제출",
     "Send Message": "메시지 보내기",
+    "CEO Message": "CEO 메시지",
     "Inquiry Type": "문의 유형",
     "Name": "이름",
     "Message": "문의 내용",
