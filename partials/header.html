@@ -6,7 +6,7 @@
       <div class="n-sub">{{partner_label}}</div>
     </div>
   </a>
-  <ul class="n-menu">
+  <ul id="nav-menu" class="n-menu">
     <li><a href="about-us.html" class="{{about_active}} has-sub">{{about}}</a>
       <div class="sub-menu">
         <a href="about-us.html">{{about_us}}</a>
@@ -24,7 +24,9 @@
       </div>
     </li>
     <li><a href="news.html" class="{{news_active}}">{{news}}</a></li>
+    <li class="n-mobile-contact"><a href="contact.html">{{contact_us}}</a></li>
   </ul>
   <a href="contact.html" class="n-cta">{{contact_us}} <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   <div class="n-lang" aria-label="Language"><a class="{{en_active}}" data-lang-choice="en" href="../en/{{filename}}" hreflang="en">EN</a><a class="{{ko_active}}" data-lang-choice="ko" href="../ko/{{filename}}" hreflang="ko">KO</a></div>
+  <button class="n-toggle" type="button" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>

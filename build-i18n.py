@@ -193,6 +193,7 @@ KO_TEXT = {
     "View All Services": "전체 서비스 보기",
     "Start your data center project<br>with the right team.": "최적의 팀과 함께<br>데이터센터 프로젝트를 시작하세요.",
     "View Projects": "프로젝트 보기",
+    "A selection of large-scale data center projects developed, managed, or advised by NFD Korea.": "NFD Korea가 개발, 관리, 자문한 대규모 데이터센터 프로젝트입니다.",
     "Data Center Development": "데이터센터 개발",
     "Design Engineering": "설계 엔지니어링",
     "Project Management": "프로젝트 관리",
@@ -520,6 +521,21 @@ KO_TEXT = {
     "Speak with our experts": "전문가와 상담하기",
     "Total Pipeline": "전체 파이프라인",
     "Energy Efficiency Achieved": "달성 에너지 효율",
+    "CAPEX vs. Comparable IDC": "유사 IDC 대비 CAPEX",
+    "Yongin Deokseong-ri IDC": "용인 덕성리 IDC",
+    "Yongin Deokseong-ri IDC · Greater Seoul Area": "용인 덕성리 IDC · 수도권",
+    "Dangjin Songsan IDC": "당진 송산 IDC",
+    "Dangjin Songsan IDC · One of Korea's largest hyperscale developments": "당진 송산 IDC · 국내 최대급 하이퍼스케일 개발",
+    "Ansan Seonggok-dong IDC": "안산 성곡동 IDC",
+    "Ansan IDC": "안산 IDC",
+    "Gasan IDC": "가산 IDC",
+    "Gasan IDC · Geumcheon-gu, Seoul": "가산 IDC · 서울 금천구",
+    "Yongin Deokseong-ri IDC Development": "용인 덕성리 IDC 개발",
+    "80MW hyperscale data center in the Greater Seoul Yongin market": "수도권 용인 권역의 80MW 하이퍼스케일 데이터센터",
+    "Design, engineering, pre-construction, and PM execution": "설계, 엔지니어링, 착공 전 단계 및 PM 수행",
+    "PUE 1.33 achieved": "PUE 1.33 달성",
+    "vs. comparable IDC": "유사 IDC 대비",
+    "Global CSP": "글로벌 CSP",
     "Owner Development": "자체 개발",
     "Owner-developed projects": "자체 개발 프로젝트",
     "Owner Development · In Progress": "자체 개발 · 진행 중",
@@ -674,7 +690,7 @@ KO_TEXT = {
     "NFD Korea has strengthened its global network through a new partnership with a Taiwan-based IDC developer. This collaboration is expected to expand the company's presence across the Asia-Pacific data center development market.": "NFD Korea는 대만 기반 IDC 개발사와의 새로운 파트너십을 통해 글로벌 네트워크를 강화했습니다. 이번 협력은 아시아태평양 데이터센터 개발 시장에서 회사의 입지를 확대하는 계기가 될 것으로 기대됩니다.",
     "The first 200MW phase and second 100MW phase of Dangjin Songsan IDC have also officially moved forward. With a combined scale of 300MW, the program is planned as one of Korea's largest hyperscale data center campuses, designed to meet growing demand from global cloud service providers.": "당진 송산 IDC의 1단계 200MW와 2단계 100MW도 공식적으로 추진되고 있습니다. 총 300MW 규모의 이 프로그램은 글로벌 클라우드 서비스 제공자의 증가하는 수요에 대응하기 위한 국내 최대급 하이퍼스케일 데이터센터 캠퍼스로 계획되고 있습니다.",
     "Supported by its proprietary liquid cooling design capability, NFD Korea will continue delivering data center solutions optimized for high-density AI computing environments and help clients build resilient digital infrastructure through ongoing technical innovation.": "자체 액체냉각 설계 역량을 기반으로 NFD Korea는 고밀도 AI 컴퓨팅 환경에 최적화된 데이터센터 솔루션을 지속적으로 제공하고, 꾸준한 기술 혁신을 통해 고객의 견고한 디지털 인프라 구축을 지원하겠습니다.",
-    "The latest updates from NFD Korea, along with perspective on the evolving data center industry.": "NFD Korea의 최신 소식과 변화하는 데이터센터 산업에 대한 인사이트를 전합니다.",
+    "The latest updates from NFD Korea, along with perspective on the evolving data center industry.": "NFD Korea의 최신 소식과 데이터센터 산업 인사이트입니다.",
     "NFD Korea project development update": "NFD Korea 프로젝트 개발 현황 업데이트",
     "Read the latest progress across NFD Korea's data center development programs and current project milestones.": "NFD Korea의 데이터센터 개발 프로그램과 주요 프로젝트 마일스톤의 최신 진행 상황을 확인하세요.",
     "NFD Korea expands partnerships and launches new projects": "NFD Korea, 파트너십 확대 및 신규 프로젝트 착수",
@@ -716,9 +732,37 @@ LANG_CSS = """
 .n-lang{display:flex;align-items:center;gap:3px;margin-left:10px;border:1px solid var(--border,#DDE3EF);border-radius:7px;padding:3px;background:rgba(255,255,255,.72);flex-shrink:0}
 .n-lang a{font-family:var(--ff-en,'DM Sans',sans-serif);font-size:12px;font-weight:700;line-height:1;color:var(--gray-t,#4A5568);padding:7px 9px;border-radius:5px;text-decoration:none}
 .n-lang a.active{background:var(--navy,#1A2B52);color:#fff}
+.n-toggle{display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;width:40px;height:40px;border:1px solid var(--border,#DDE3EF);border-radius:7px;background:#fff;color:var(--navy,#1A2B52);cursor:pointer;flex-shrink:0}
+.n-toggle span{display:block;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .2s,opacity .2s}
+.n-toggle:hover{border-color:var(--blue,#1565C0);color:var(--blue,#1565C0)}
+.n-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.n-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.n-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.n-mobile-contact{display:none}
 .n-menu>li .sub-menu{top:100%}
 .n-menu>li.open .sub-menu{display:block}
-@media(max-width:1024px){.n-lang{margin-left:auto}.n-cta{display:none}}
+@media(max-width:1024px){
+  #nav{position:fixed}
+  .n-lang{margin-left:auto}
+  .n-cta{display:none}
+  .n-toggle{display:flex}
+  #nav .n-menu{
+    display:none;position:absolute;top:70px;left:16px;right:16px;
+    margin:0;padding:10px;list-style:none;flex-direction:column;align-items:stretch;gap:2px;
+    background:rgba(255,255,255,.98);border:1px solid var(--border,#DDE3EF);border-radius:10px;
+    box-shadow:0 18px 48px rgba(8,16,38,.14);z-index:120;
+  }
+  #nav.nav-open .n-menu{display:flex}
+  #nav .n-menu>li{width:100%}
+  #nav .n-mobile-contact{display:block}
+  #nav .n-menu>li>a{width:100%;justify-content:space-between;padding:13px 14px;border-radius:7px;color:var(--navy,#1A2B52)}
+  #nav .sub-menu{
+    position:static;display:none;width:100%;min-width:0;margin:2px 0 6px;padding:5px;
+    box-shadow:none;border:0;border-radius:8px;background:var(--off,#F4F7FB);
+  }
+  #nav .sub-menu a{padding:10px 14px;border-radius:6px;color:var(--gray-t,#4A5568)}
+  #nav .n-menu>li.open .sub-menu{display:block}
+}
 </style>
 """
 
@@ -727,6 +771,19 @@ LANG_SCRIPT = """
 document.querySelectorAll('[data-lang-choice]').forEach((link)=>{
   link.addEventListener('click',()=>localStorage.setItem('nfd_lang',link.dataset.langChoice));
 });
+const nav = document.getElementById('nav');
+const navToggle = document.querySelector('.n-toggle');
+const setNavOpen = (open) => {
+  if(!nav || !navToggle) return;
+  nav.classList.toggle('nav-open', open);
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+if(navToggle){
+  navToggle.addEventListener('click', (event)=>{
+    event.stopPropagation();
+    setNavOpen(!nav.classList.contains('nav-open'));
+  });
+}
 let navCloseTimer;
 const closeOpenNavItems = (exceptItem) => {
   document.querySelectorAll('.n-menu>li.open').forEach((openItem)=>{
@@ -736,11 +793,13 @@ const closeOpenNavItems = (exceptItem) => {
 document.querySelectorAll('.n-menu>li').forEach((item)=>{
   if(!item.querySelector('.sub-menu')) return;
   item.addEventListener('mouseenter',()=>{
+    if(window.innerWidth <= 1024) return;
     clearTimeout(navCloseTimer);
     closeOpenNavItems(item);
     item.classList.add('open');
   });
   item.addEventListener('mouseleave',()=>{
+    if(window.innerWidth <= 1024) return;
     clearTimeout(navCloseTimer);
     navCloseTimer = setTimeout(()=>item.classList.remove('open'),180);
   });
@@ -756,9 +815,19 @@ document.querySelectorAll('.n-menu>li>a.has-sub').forEach((trigger)=>{
   });
 });
 document.addEventListener('click',(event)=>{
-  if(!event.target.closest('.n-menu')) {
+  if(!event.target.closest('#nav')) {
     closeOpenNavItems();
+    setNavOpen(false);
   }
+});
+document.addEventListener('keydown',(event)=>{
+  if(event.key === 'Escape'){
+    closeOpenNavItems();
+    setNavOpen(false);
+  }
+});
+window.addEventListener('resize',()=>{
+  if(window.innerWidth > 1024) setNavOpen(false);
 });
 </script>
 """

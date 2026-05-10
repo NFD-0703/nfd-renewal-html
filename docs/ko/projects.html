@@ -297,9 +297,37 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
 .n-lang{display:flex;align-items:center;gap:3px;margin-left:10px;border:1px solid var(--border,#DDE3EF);border-radius:7px;padding:3px;background:rgba(255,255,255,.72);flex-shrink:0}
 .n-lang a{font-family:var(--ff-en,'DM Sans',sans-serif);font-size:12px;font-weight:700;line-height:1;color:var(--gray-t,#4A5568);padding:7px 9px;border-radius:5px;text-decoration:none}
 .n-lang a.active{background:var(--navy,#1A2B52);color:#fff}
+.n-toggle{display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;width:40px;height:40px;border:1px solid var(--border,#DDE3EF);border-radius:7px;background:#fff;color:var(--navy,#1A2B52);cursor:pointer;flex-shrink:0}
+.n-toggle span{display:block;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .2s,opacity .2s}
+.n-toggle:hover{border-color:var(--blue,#1565C0);color:var(--blue,#1565C0)}
+.n-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.n-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.n-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.n-mobile-contact{display:none}
 .n-menu>li .sub-menu{top:100%}
 .n-menu>li.open .sub-menu{display:block}
-@media(max-width:1024px){.n-lang{margin-left:auto}.n-cta{display:none}}
+@media(max-width:1024px){
+  #nav{position:fixed}
+  .n-lang{margin-left:auto}
+  .n-cta{display:none}
+  .n-toggle{display:flex}
+  #nav .n-menu{
+    display:none;position:absolute;top:70px;left:16px;right:16px;
+    margin:0;padding:10px;list-style:none;flex-direction:column;align-items:stretch;gap:2px;
+    background:rgba(255,255,255,.98);border:1px solid var(--border,#DDE3EF);border-radius:10px;
+    box-shadow:0 18px 48px rgba(8,16,38,.14);z-index:120;
+  }
+  #nav.nav-open .n-menu{display:flex}
+  #nav .n-menu>li{width:100%}
+  #nav .n-mobile-contact{display:block}
+  #nav .n-menu>li>a{width:100%;justify-content:space-between;padding:13px 14px;border-radius:7px;color:var(--navy,#1A2B52)}
+  #nav .sub-menu{
+    position:static;display:none;width:100%;min-width:0;margin:2px 0 6px;padding:5px;
+    box-shadow:none;border:0;border-radius:8px;background:var(--off,#F4F7FB);
+  }
+  #nav .sub-menu a{padding:10px 14px;border-radius:6px;color:var(--gray-t,#4A5568)}
+  #nav .n-menu>li.open .sub-menu{display:block}
+}
 </style>
 
 </head><body>
@@ -311,7 +339,7 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
       <div class="n-sub">데이터센터 파트너</div>
     </div>
   </a>
-  <ul class="n-menu">
+  <ul id="nav-menu" class="n-menu">
     <li><a href="about-us.html" class=" has-sub">회사소개</a>
       <div class="sub-menu">
         <a href="about-us.html">회사소개</a>
@@ -329,9 +357,11 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
       </div>
     </li>
     <li><a href="news.html" class="">뉴스</a></li>
+    <li class="n-mobile-contact"><a href="contact.html">문의하기</a></li>
   </ul>
   <a href="contact.html" class="n-cta">문의하기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   <div class="n-lang" aria-label="Language"><a class="" data-lang-choice="en" href="../en/projects.html" hreflang="en">EN</a><a class="active" data-lang-choice="ko" href="../ko/projects.html" hreflang="ko">KO</a></div>
+  <button class="n-toggle" type="button" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 
@@ -341,7 +371,7 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
   <div class="ph-c">
     <div class="ph-bc"><a href="index.html">홈</a><span>/</span><span style="color:rgba(255,255,255,.75)">프로젝트</span></div>
     <h1 class="ph-h1">프로젝트</h1>
-    <p class="ph-sub">A selection of large-scale data center projects developed, managed, or advised by NFD Korea.</p>
+    <p class="ph-sub">NFD Korea가 개발, 관리, 자문한 대규모 데이터센터 프로젝트입니다.</p>
   </div>
 </div>
 
@@ -349,7 +379,7 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
   <div class="ns r"><div class="ns-v">420<em>MW+</em></div><div class="ns-l">전체 파이프라인</div></div>
   <div class="ns r"><div class="ns-v">5<em>+</em></div><div class="ns-l">IDC 프로젝트</div></div>
   <div class="ns r"><div class="ns-v">1.33<em>PUE</em></div><div class="ns-l">달성 에너지 효율</div></div>
-  <div class="ns r"><div class="ns-v">90<em>%</em></div><div class="ns-l">CAPEX vs. Comparable IDC</div></div>
+  <div class="ns r"><div class="ns-v">90<em>%</em></div><div class="ns-l">유사 IDC 대비 CAPEX</div></div>
 </div>
 
 <section class="sec"><div class="sec-inner">
@@ -361,8 +391,8 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
     <div class="pd-img"><div class="pd-img-in" style="background-image:url('../images/remote/unsplash-photo-1486325212027-8081e485255e-w900.webp');"></div></div>
     <div class="pd-body dk">
       <div class="pd-tag">자체 개발 · 진행 중</div>
-      <div class="pd-h3">Yongin Deokseong-ri IDC</div>
-      <div class="pd-sub">Yongin Deokseong-ri IDC · Greater Seoul Area</div>
+      <div class="pd-h3">용인 덕성리 IDC</div>
+      <div class="pd-sub">용인 덕성리 IDC · 수도권</div>
       <div class="pd-specs">
         <div class="pd-s"><div class="k">수전 용량</div><div class="v hi">80MW</div></div>
         <div class="pd-s"><div class="k">IT 부하</div><div class="v">56MW</div></div>
@@ -372,7 +402,7 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
         <div class="pd-s"><div class="k">연면적</div><div class="v">57,971 m²</div></div>
       </div>
       <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.3);font-family:'DM Sans',sans-serif;margin-bottom:10px;">업무 범위</div>
-      <ul class="sc-list"><li>Warburg Pincus와 토지 개발 및 투자자 유치</li><li>Design, engineering, pre-construction, and PM execution</li><li>글로벌 CSP LOI 및 통신사 LOC 확보를 통한 임차사 유치</li></ul>
+      <ul class="sc-list"><li>Warburg Pincus와 토지 개발 및 투자자 유치</li><li>설계, 엔지니어링, 착공 전 단계 및 PM 수행</li><li>글로벌 CSP LOI 및 통신사 LOC 확보를 통한 임차사 유치</li></ul>
       <div class="pd-st">2025년 9월 착공 · 2028년 2분기 준공</div>
     </div>
   </div>
@@ -381,8 +411,8 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
     <div class="pd-img"><div class="pd-img-in" style="background-image:url('../images/remote/unsplash-photo-1473341304170-971dccb5ac1e-w900.webp');"></div></div>
     <div class="pd-body dk">
       <div class="pd-tag">자체 개발 · 하이퍼스케일 프로그램</div>
-      <div class="pd-h3">Dangjin Songsan IDC</div>
-      <div class="pd-sub">Dangjin Songsan IDC · One of Korea's largest hyperscale developments</div>
+      <div class="pd-h3">당진 송산 IDC</div>
+      <div class="pd-sub">당진 송산 IDC · 국내 최대급 하이퍼스케일 개발</div>
       <div class="pd-specs">
         <div class="pd-s"><div class="k">수전 용량</div><div class="v hi">200MW (+100MW)</div></div>
         <div class="pd-s"><div class="k">IT 부하</div><div class="v">140MW</div></div>
@@ -399,8 +429,8 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
     <div class="pd-img"><div class="pd-img-in" style="background-image:url('../images/remote/unsplash-photo-1565008576549-57569a49371d-w900.webp');"></div></div>
     <div class="pd-body dk">
       <div class="pd-tag">자체 개발 · 개발 중</div>
-      <div class="pd-h3">Ansan Seonggok-dong IDC</div>
-      <div class="pd-sub">Ansan Seonggok-dong IDC</div>
+      <div class="pd-h3">안산 성곡동 IDC</div>
+      <div class="pd-sub">안산 성곡동 IDC</div>
       <div class="pd-specs">
         <div class="pd-s"><div class="k">수전 용량</div><div class="v hi">40MW</div></div>
         <div class="pd-s"><div class="k">IT 부하</div><div class="v">28MW (PUE 1.33)</div></div>
@@ -421,7 +451,7 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
     <div class="pd-body">
       <div class="pd-tag">컨설팅 · 착공 전 단계</div>
       <div class="pd-h3">안산 IDC</div>
-      <div class="pd-sub">Ansan IDC</div>
+      <div class="pd-sub">안산 IDC</div>
       <div class="pd-specs">
         <div class="pd-s"><div class="k">수전 용량</div><div class="v hi">40MW</div></div>
         <div class="pd-s"><div class="k">IT 부하</div><div class="v">28MW (PUE 1.33)</div></div>
@@ -435,8 +465,8 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
     <div class="pd-img"><div class="pd-img-in" style="background-image:url('../images/remote/unsplash-photo-1497366216548-37526070297c-w900.webp');"></div></div>
     <div class="pd-body">
       <div class="pd-tag">컨설팅 · 운영 중</div>
-      <div class="pd-h3">Gasan IDC</div>
-      <div class="pd-sub">Gasan IDC · Geumcheon-gu, Seoul</div>
+      <div class="pd-h3">가산 IDC</div>
+      <div class="pd-sub">가산 IDC · 서울 금천구</div>
       <div class="pd-specs">
         <div class="pd-s"><div class="k">수전 용량</div><div class="v hi">20MW</div></div>
         <div class="pd-s"><div class="k">IT 부하</div><div class="v">12.9MW (PUE 1.54)</div></div>
@@ -451,12 +481,12 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
     <div class="cs-img"><div class="cs-img-in" style="background-image:url('../images/remote/unsplash-photo-1559136555-9303baea8ebd-w900.webp');"></div></div>
     <div class="cs-body">
       <div class="eyebrow lt" style="margin-bottom:14px;"><div class="eyebrow-bar"></div><span>사례 연구</span></div>
-      <h2 style="font-size:clamp(22px,2.8vw,34px);font-weight:900;color:#fff;margin-bottom:8px;">Yongin Deokseong-ri IDC Development</h2>
-      <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.4);margin-bottom:28px;">80MW hyperscale data center in the Greater Seoul Yongin market</p>
+      <h2 style="font-size:clamp(22px,2.8vw,34px);font-weight:900;color:#fff;margin-bottom:8px;">용인 덕성리 IDC 개발</h2>
+      <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.4);margin-bottom:28px;">수도권 용인 권역의 80MW 하이퍼스케일 데이터센터</p>
       <div class="cs-kpis">
-        <div class="kpi"><div class="kpi-v">56MW</div><div class="kpi-l">IT 부하<br>PUE 1.33 achieved</div></div>
-        <div class="kpi"><div class="kpi-v">90%</div><div class="kpi-l">CAPEX 효율<br>vs. comparable IDC</div></div>
-        <div class="kpi"><div class="kpi-v">LOI</div><div class="kpi-l">Global CSP<br>임차사 확보</div></div>
+        <div class="kpi"><div class="kpi-v">56MW</div><div class="kpi-l">IT 부하<br>PUE 1.33 달성</div></div>
+        <div class="kpi"><div class="kpi-v">90%</div><div class="kpi-l">CAPEX 효율<br>유사 IDC 대비</div></div>
+        <div class="kpi"><div class="kpi-v">LOI</div><div class="kpi-l">글로벌 CSP<br>임차사 확보</div></div>
         <div class="kpi"><div class="kpi-v">A+L</div><div class="kpi-l">A/C + L/C<br>확장 유연성</div></div>
       </div>
       <a href="contact.html" class="btn btn-primary">프로젝트 상담하기 →</a>
@@ -516,6 +546,19 @@ document.querySelectorAll('.r,.rl,.rr').forEach(el=>_o.observe(el));
 document.querySelectorAll('[data-lang-choice]').forEach((link)=>{
   link.addEventListener('click',()=>localStorage.setItem('nfd_lang',link.dataset.langChoice));
 });
+const nav = document.getElementById('nav');
+const navToggle = document.querySelector('.n-toggle');
+const setNavOpen = (open) => {
+  if(!nav || !navToggle) return;
+  nav.classList.toggle('nav-open', open);
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+if(navToggle){
+  navToggle.addEventListener('click', (event)=>{
+    event.stopPropagation();
+    setNavOpen(!nav.classList.contains('nav-open'));
+  });
+}
 let navCloseTimer;
 const closeOpenNavItems = (exceptItem) => {
   document.querySelectorAll('.n-menu>li.open').forEach((openItem)=>{
@@ -525,11 +568,13 @@ const closeOpenNavItems = (exceptItem) => {
 document.querySelectorAll('.n-menu>li').forEach((item)=>{
   if(!item.querySelector('.sub-menu')) return;
   item.addEventListener('mouseenter',()=>{
+    if(window.innerWidth <= 1024) return;
     clearTimeout(navCloseTimer);
     closeOpenNavItems(item);
     item.classList.add('open');
   });
   item.addEventListener('mouseleave',()=>{
+    if(window.innerWidth <= 1024) return;
     clearTimeout(navCloseTimer);
     navCloseTimer = setTimeout(()=>item.classList.remove('open'),180);
   });
@@ -545,9 +590,19 @@ document.querySelectorAll('.n-menu>li>a.has-sub').forEach((trigger)=>{
   });
 });
 document.addEventListener('click',(event)=>{
-  if(!event.target.closest('.n-menu')) {
+  if(!event.target.closest('#nav')) {
     closeOpenNavItems();
+    setNavOpen(false);
   }
+});
+document.addEventListener('keydown',(event)=>{
+  if(event.key === 'Escape'){
+    closeOpenNavItems();
+    setNavOpen(false);
+  }
+});
+window.addEventListener('resize',()=>{
+  if(window.innerWidth > 1024) setNavOpen(false);
 });
 </script>
 

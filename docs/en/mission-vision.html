@@ -322,9 +322,37 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
 .n-lang{display:flex;align-items:center;gap:3px;margin-left:10px;border:1px solid var(--border,#DDE3EF);border-radius:7px;padding:3px;background:rgba(255,255,255,.72);flex-shrink:0}
 .n-lang a{font-family:var(--ff-en,'DM Sans',sans-serif);font-size:12px;font-weight:700;line-height:1;color:var(--gray-t,#4A5568);padding:7px 9px;border-radius:5px;text-decoration:none}
 .n-lang a.active{background:var(--navy,#1A2B52);color:#fff}
+.n-toggle{display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;width:40px;height:40px;border:1px solid var(--border,#DDE3EF);border-radius:7px;background:#fff;color:var(--navy,#1A2B52);cursor:pointer;flex-shrink:0}
+.n-toggle span{display:block;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .2s,opacity .2s}
+.n-toggle:hover{border-color:var(--blue,#1565C0);color:var(--blue,#1565C0)}
+.n-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.n-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.n-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.n-mobile-contact{display:none}
 .n-menu>li .sub-menu{top:100%}
 .n-menu>li.open .sub-menu{display:block}
-@media(max-width:1024px){.n-lang{margin-left:auto}.n-cta{display:none}}
+@media(max-width:1024px){
+  #nav{position:fixed}
+  .n-lang{margin-left:auto}
+  .n-cta{display:none}
+  .n-toggle{display:flex}
+  #nav .n-menu{
+    display:none;position:absolute;top:70px;left:16px;right:16px;
+    margin:0;padding:10px;list-style:none;flex-direction:column;align-items:stretch;gap:2px;
+    background:rgba(255,255,255,.98);border:1px solid var(--border,#DDE3EF);border-radius:10px;
+    box-shadow:0 18px 48px rgba(8,16,38,.14);z-index:120;
+  }
+  #nav.nav-open .n-menu{display:flex}
+  #nav .n-menu>li{width:100%}
+  #nav .n-mobile-contact{display:block}
+  #nav .n-menu>li>a{width:100%;justify-content:space-between;padding:13px 14px;border-radius:7px;color:var(--navy,#1A2B52)}
+  #nav .sub-menu{
+    position:static;display:none;width:100%;min-width:0;margin:2px 0 6px;padding:5px;
+    box-shadow:none;border:0;border-radius:8px;background:var(--off,#F4F7FB);
+  }
+  #nav .sub-menu a{padding:10px 14px;border-radius:6px;color:var(--gray-t,#4A5568)}
+  #nav .n-menu>li.open .sub-menu{display:block}
+}
 </style>
 
 </head><body>
@@ -336,7 +364,7 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
       <div class="n-sub">Data Center Partner</div>
     </div>
   </a>
-  <ul class="n-menu">
+  <ul id="nav-menu" class="n-menu">
     <li><a href="about-us.html" class="active has-sub">About</a>
       <div class="sub-menu">
         <a href="about-us.html">About Us</a>
@@ -354,9 +382,11 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
       </div>
     </li>
     <li><a href="news.html" class="">News</a></li>
+    <li class="n-mobile-contact"><a href="contact.html">Contact Us</a></li>
   </ul>
   <a href="contact.html" class="n-cta">Contact Us <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   <div class="n-lang" aria-label="Language"><a class="active" data-lang-choice="en" href="../en/mission-vision.html" hreflang="en">EN</a><a class="" data-lang-choice="ko" href="../ko/mission-vision.html" hreflang="ko">KO</a></div>
+  <button class="n-toggle" type="button" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 
@@ -479,6 +509,19 @@ document.querySelectorAll('.r,.rl,.rr').forEach(el=>_o.observe(el));
 document.querySelectorAll('[data-lang-choice]').forEach((link)=>{
   link.addEventListener('click',()=>localStorage.setItem('nfd_lang',link.dataset.langChoice));
 });
+const nav = document.getElementById('nav');
+const navToggle = document.querySelector('.n-toggle');
+const setNavOpen = (open) => {
+  if(!nav || !navToggle) return;
+  nav.classList.toggle('nav-open', open);
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+if(navToggle){
+  navToggle.addEventListener('click', (event)=>{
+    event.stopPropagation();
+    setNavOpen(!nav.classList.contains('nav-open'));
+  });
+}
 let navCloseTimer;
 const closeOpenNavItems = (exceptItem) => {
   document.querySelectorAll('.n-menu>li.open').forEach((openItem)=>{
@@ -488,11 +531,13 @@ const closeOpenNavItems = (exceptItem) => {
 document.querySelectorAll('.n-menu>li').forEach((item)=>{
   if(!item.querySelector('.sub-menu')) return;
   item.addEventListener('mouseenter',()=>{
+    if(window.innerWidth <= 1024) return;
     clearTimeout(navCloseTimer);
     closeOpenNavItems(item);
     item.classList.add('open');
   });
   item.addEventListener('mouseleave',()=>{
+    if(window.innerWidth <= 1024) return;
     clearTimeout(navCloseTimer);
     navCloseTimer = setTimeout(()=>item.classList.remove('open'),180);
   });
@@ -508,9 +553,19 @@ document.querySelectorAll('.n-menu>li>a.has-sub').forEach((trigger)=>{
   });
 });
 document.addEventListener('click',(event)=>{
-  if(!event.target.closest('.n-menu')) {
+  if(!event.target.closest('#nav')) {
     closeOpenNavItems();
+    setNavOpen(false);
   }
+});
+document.addEventListener('keydown',(event)=>{
+  if(event.key === 'Escape'){
+    closeOpenNavItems();
+    setNavOpen(false);
+  }
+});
+window.addEventListener('resize',()=>{
+  if(window.innerWidth > 1024) setNavOpen(false);
 });
 </script>
 
