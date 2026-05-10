@@ -191,7 +191,7 @@ KO_TEXT = {
     "What We Offer": "제공 서비스",
     "Differentiated services<br>for each project stage": "프로젝트 단계별<br>차별화된 서비스",
     "View All Services": "전체 서비스 보기",
-    "Start your data center project<br>with the right team.": "올바른 팀과 함께<br>데이터센터 프로젝트를 시작하세요.",
+    "Start your data center project<br>with the right team.": "최적의 팀과 함께<br>데이터센터 프로젝트를 시작하세요.",
     "View Projects": "프로젝트 보기",
     "Data Center Development": "데이터센터 개발",
     "Design Engineering": "설계 엔지니어링",
