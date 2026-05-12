@@ -142,6 +142,7 @@ a{text-decoration:none;color:inherit;}
 .cta-band.blue{background:var(--blue);}
 .cta-band.navy{background:var(--navy-d);}
 .cta-band h2{font-size:clamp(26px,3vw,42px);font-weight:900;color:var(--white);line-height:1.25;max-width:580px;}
+.cta-band h2.cta-compact{font-size:clamp(24px,2.35vw,34px);line-height:1.32;max-width:620px;}
 .cta-band-btns{display:flex;gap:14px;flex-shrink:0;}
 
 /* ── FOOTER ── */
@@ -374,6 +375,90 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
   #nav .sub-menu a{padding:10px 14px;border-radius:6px;color:var(--gray-t,#4A5568)}
   #nav .n-menu>li.open .sub-menu{display:block}
 }
+html[lang="ko"] body{
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  line-height:1.76;
+  letter-spacing:0;
+}
+html[lang="ko"] .hero-h1,
+html[lang="ko"] .ph-h1,
+html[lang="ko"] .h2,
+html[lang="ko"] .ct-h1,
+html[lang="ko"] .nd-title,
+html[lang="ko"] .cv-hero-inner h1,
+html[lang="ko"] .cta-band h2,
+html[lang="ko"] .cs-body h2{
+  letter-spacing:0 !important;
+  font-weight:800 !important;
+  line-height:1.26 !important;
+}
+html[lang="ko"] .hero-h1{font-size:64px !important;line-height:1.18 !important}
+html[lang="ko"] .ph-h1{font-size:52px !important}
+html[lang="ko"] .h2,
+html[lang="ko"] .ct-h1,
+html[lang="ko"] .nd-title{font-size:42px !important}
+html[lang="ko"] .cv-hero-inner h1{font-size:60px !important}
+html[lang="ko"] .cta-band h2{font-size:40px !important}
+html[lang="ko"] p,
+html[lang="ko"] .lead,
+html[lang="ko"] .ph-sub,
+html[lang="ko"] .hero-desc,
+html[lang="ko"] .ct-sub,
+html[lang="ko"] .nd-sub,
+html[lang="ko"] .nd-body p,
+html[lang="ko"] .jd-overview p,
+html[lang="ko"] .jd-list li,
+html[lang="ko"] .val-body p,
+html[lang="ko"] .ii p,
+html[lang="ko"] .kc p,
+html[lang="ko"] .psc-body p,
+html[lang="ko"] .svc-copy p,
+html[lang="ko"] .pd-body p{
+  line-height:1.88 !important;
+  font-weight:400;
+  letter-spacing:0;
+}
+html[lang="ko"] .n-menu a,
+html[lang="ko"] .sub-menu a,
+html[lang="ko"] .btn,
+html[lang="ko"] .n-cta,
+html[lang="ko"] .cf-btn{
+  letter-spacing:0;
+  line-height:1.35;
+}
+html[lang="ko"] .eyebrow span,
+html[lang="ko"] .ct-tag,
+html[lang="ko"] .val-num,
+html[lang="ko"] .psc-num,
+html[lang="ko"] .pd-tag,
+html[lang="ko"] .nd-cat,
+html[lang="ko"] .fg label{
+  letter-spacing:.08em !important;
+}
+@media(max-width:768px){
+  html[lang="ko"] body{font-size:15.5px}
+  html[lang="ko"] .hero-h1{font-size:38px !important;line-height:1.24 !important}
+  html[lang="ko"] .ph-h1{font-size:36px !important}
+  html[lang="ko"] .h2,
+  html[lang="ko"] .ct-h1,
+  html[lang="ko"] .nd-title{font-size:30px !important}
+  html[lang="ko"] .cv-hero-inner h1{font-size:36px !important;line-height:1.34 !important}
+  html[lang="ko"] .cta-band h2{font-size:30px !important}
+  html[lang="ko"] .ph-sub,
+  html[lang="ko"] .hero-desc,
+  html[lang="ko"] .lead,
+  html[lang="ko"] .ct-sub,
+  html[lang="ko"] .nd-sub{font-size:16px !important}
+}
+@media(max-width:480px){
+  html[lang="ko"] .hero-h1{font-size:34px !important}
+  html[lang="ko"] .ph-h1{font-size:32px !important}
+  html[lang="ko"] .h2,
+  html[lang="ko"] .ct-h1,
+  html[lang="ko"] .nd-title{font-size:28px !important}
+  html[lang="ko"] .cta-band h2{font-size:27px !important}
+}
 </style>
 
 </head>
@@ -416,7 +501,7 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
   <div class="hero-bg"></div>
   <div class="hero-c">
     <div class="htag"><div class="htag-dot"></div><span>Next Frontier Drive Korea</span></div>
-    <h1 class="hero-h1">Next Frontier Drive와 함께<br><em>미래를 이끌어갑니다</em></h1>
+    <h1 class="hero-h1">Next Frontier Drive<br><em>미래를 이끌어갑니다</em></h1>
     <p class="hero-desc">NFD Korea는 개발, 설계 엔지니어링, 프로젝트 관리, 운영 역량을 결합해 안정적이고 확장 가능한 데이터센터 플랫폼을 구축합니다.</p>
     <div class="hero-btns">
       <a href="services.html" class="btn btn-primary">서비스 보기 →</a>
@@ -483,7 +568,7 @@ footer{background:var(--navy-d);padding:60px 60px 36px;}
 
 <div class="cta-band blue r" style="margin:0;">
   <div class="sec-inner" style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
-    <h2>최적의 팀과 함께<br>데이터센터 프로젝트를 시작하세요.</h2>
+    <h2 class="cta-compact">최적의 팀과 함께<br>데이터센터 프로젝트를 시작하세요.</h2>
     <div class="cta-band-btns">
       <a href="contact.html" class="btn btn-wh">문의하기 →</a>
       <a href="projects.html" class="btn" style="background:var(--white);color:var(--blue);border-color:var(--white);padding:14px 36px;min-height:52px;">프로젝트 보기</a>

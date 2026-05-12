@@ -182,7 +182,7 @@ KO_TEXT = {
     "Data Center Consulting Partner": "데이터센터 컨설팅 파트너",
     "We build the future of sustainable<br>digital infrastructure through expertise and trust.": "전문성과 신뢰를 바탕으로<br>지속 가능한 디지털 인프라의 미래를 만듭니다.",
     "All rights reserved.": "All rights reserved.",
-    "Drive Your Future<br><em>with Next Frontier Drive</em>": "Next Frontier Drive와 함께<br><em>미래를 이끌어갑니다</em>",
+    "Drive Your Future<br><em>with Next Frontier Drive</em>": "Next Frontier Drive<br><em>미래를 이끌어갑니다</em>",
     "NFD Korea brings development, design engineering, project management, and operations together to build resilient, scalable data center platforms.": "NFD Korea는 개발, 설계 엔지니어링, 프로젝트 관리, 운영 역량을 결합해 안정적이고 확장 가능한 데이터센터 플랫폼을 구축합니다.",
     "Explore Services": "서비스 보기",
     "Why NFD Korea": "왜 NFD Korea인가",
@@ -763,6 +763,90 @@ LANG_CSS = """
   }
   #nav .sub-menu a{padding:10px 14px;border-radius:6px;color:var(--gray-t,#4A5568)}
   #nav .n-menu>li.open .sub-menu{display:block}
+}
+html[lang="ko"] body{
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  line-height:1.76;
+  letter-spacing:0;
+}
+html[lang="ko"] .hero-h1,
+html[lang="ko"] .ph-h1,
+html[lang="ko"] .h2,
+html[lang="ko"] .ct-h1,
+html[lang="ko"] .nd-title,
+html[lang="ko"] .cv-hero-inner h1,
+html[lang="ko"] .cta-band h2,
+html[lang="ko"] .cs-body h2{
+  letter-spacing:0 !important;
+  font-weight:800 !important;
+  line-height:1.26 !important;
+}
+html[lang="ko"] .hero-h1{font-size:64px !important;line-height:1.18 !important}
+html[lang="ko"] .ph-h1{font-size:52px !important}
+html[lang="ko"] .h2,
+html[lang="ko"] .ct-h1,
+html[lang="ko"] .nd-title{font-size:42px !important}
+html[lang="ko"] .cv-hero-inner h1{font-size:60px !important}
+html[lang="ko"] .cta-band h2{font-size:40px !important}
+html[lang="ko"] p,
+html[lang="ko"] .lead,
+html[lang="ko"] .ph-sub,
+html[lang="ko"] .hero-desc,
+html[lang="ko"] .ct-sub,
+html[lang="ko"] .nd-sub,
+html[lang="ko"] .nd-body p,
+html[lang="ko"] .jd-overview p,
+html[lang="ko"] .jd-list li,
+html[lang="ko"] .val-body p,
+html[lang="ko"] .ii p,
+html[lang="ko"] .kc p,
+html[lang="ko"] .psc-body p,
+html[lang="ko"] .svc-copy p,
+html[lang="ko"] .pd-body p{
+  line-height:1.88 !important;
+  font-weight:400;
+  letter-spacing:0;
+}
+html[lang="ko"] .n-menu a,
+html[lang="ko"] .sub-menu a,
+html[lang="ko"] .btn,
+html[lang="ko"] .n-cta,
+html[lang="ko"] .cf-btn{
+  letter-spacing:0;
+  line-height:1.35;
+}
+html[lang="ko"] .eyebrow span,
+html[lang="ko"] .ct-tag,
+html[lang="ko"] .val-num,
+html[lang="ko"] .psc-num,
+html[lang="ko"] .pd-tag,
+html[lang="ko"] .nd-cat,
+html[lang="ko"] .fg label{
+  letter-spacing:.08em !important;
+}
+@media(max-width:768px){
+  html[lang="ko"] body{font-size:15.5px}
+  html[lang="ko"] .hero-h1{font-size:38px !important;line-height:1.24 !important}
+  html[lang="ko"] .ph-h1{font-size:36px !important}
+  html[lang="ko"] .h2,
+  html[lang="ko"] .ct-h1,
+  html[lang="ko"] .nd-title{font-size:30px !important}
+  html[lang="ko"] .cv-hero-inner h1{font-size:36px !important;line-height:1.34 !important}
+  html[lang="ko"] .cta-band h2{font-size:30px !important}
+  html[lang="ko"] .ph-sub,
+  html[lang="ko"] .hero-desc,
+  html[lang="ko"] .lead,
+  html[lang="ko"] .ct-sub,
+  html[lang="ko"] .nd-sub{font-size:16px !important}
+}
+@media(max-width:480px){
+  html[lang="ko"] .hero-h1{font-size:34px !important}
+  html[lang="ko"] .ph-h1{font-size:32px !important}
+  html[lang="ko"] .h2,
+  html[lang="ko"] .ct-h1,
+  html[lang="ko"] .nd-title{font-size:28px !important}
+  html[lang="ko"] .cta-band h2{font-size:27px !important}
 }
 </style>
 """
