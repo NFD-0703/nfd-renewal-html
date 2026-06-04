@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parent
 SOURCE_DIR = ROOT / "src" / "pages"
 OUTPUT_DIR = ROOT / "docs"
 PUBLIC_DIR = ROOT / "public"
+NEWS_DATA_PATH = ROOT / "src" / "news.json"
 
 
 def discover_page_names() -> list[str]:
@@ -31,6 +32,22 @@ def discover_page_names() -> list[str]:
 
 
 PAGE_NAMES = discover_page_names()
+LEGACY_PAGE_NAMES = {"news-detail.html"}
+
+
+def load_news_items() -> list[dict]:
+    if not NEWS_DATA_PATH.exists():
+        return []
+    items = json.loads(NEWS_DATA_PATH.read_text(encoding="utf-8"))
+    for item in items:
+        item["filename"] = f"news-{item['slug']}.html"
+    return items
+
+
+NEWS_ITEMS = load_news_items()
+NEWS_PAGE_NAMES = [item["filename"] for item in NEWS_ITEMS]
+NEWS_BY_FILENAME = {item["filename"]: item for item in NEWS_ITEMS}
+SITEMAP_PAGE_NAMES = [name for name in PAGE_NAMES if name not in LEGACY_PAGE_NAMES] + NEWS_PAGE_NAMES
 
 
 def default_base_path() -> str:
@@ -932,16 +949,44 @@ def active(value: bool) -> str:
     return "active" if value else ""
 
 
-def partial_values(lang: str, filename: str) -> dict[str, str]:
+def page_href(lang: str, filename: str, placement: str) -> str:
+    if lang == "en":
+        if placement == "root":
+            return f"en/{filename}"
+        return filename if placement == "en" else f"../en/{filename}"
+    if filename == "index.html":
+        return "/" if placement == "root" else "../"
+    return filename if placement == "root" else f"../{filename}"
+
+
+def asset_url(path: str) -> str:
+    if SITE_URL:
+        return f"{SITE_URL}/{path}"
+    return f"{SITE_BASE_PATH}/{path}"
+
+
+def page_relative_href(filename: str, lang: str, placement: str) -> str:
+    if lang == "en":
+        return filename if placement == "en" else f"en/{filename}"
+    return filename if placement == "root" else f"../{filename}"
+
+
+def asset_relative_path(path: str, placement: str) -> str:
+    return path if placement == "root" else f"../{path}"
+
+
+def partial_values(lang: str, filename: str, placement: str) -> dict[str, str]:
     values = dict(LABELS[lang])
     values.update(
         {
             "filename": filename,
+            "en_href": page_href("en", filename, placement),
+            "ko_href": page_href("ko", filename, placement),
             "about_active": active(filename in ABOUT_PAGES),
             "services_active": active(filename in SERVICE_PAGES),
             "projects_active": active(filename == "projects.html"),
             "careers_active": active(filename in CAREERS_PAGES),
-            "news_active": active(filename in {"news.html", "news-detail.html"}),
+            "news_active": active(filename == "news.html" or filename.startswith("news-") or filename in LEGACY_PAGE_NAMES),
             "en_active": active(lang == "en"),
             "ko_active": active(lang == "ko"),
         }
@@ -949,8 +994,8 @@ def partial_values(lang: str, filename: str) -> dict[str, str]:
     return values
 
 
-def replace_layout_partials(text: str, lang: str, filename: str) -> str:
-    values = partial_values(lang, filename)
+def replace_layout_partials(text: str, lang: str, filename: str, placement: str) -> str:
+    values = partial_values(lang, filename, placement)
     header = render_template("header.html", values)
     footer = render_template("footer.html", values)
     text, header_count = re.subn(r'<nav\s+id="nav"[\s\S]*?</nav>', header, text, count=1)
@@ -962,17 +1007,21 @@ def replace_layout_partials(text: str, lang: str, filename: str) -> str:
     return text
 
 
-def rewrite_assets(text: str) -> str:
+def rewrite_assets(text: str, nested: bool = True) -> str:
+    if not nested:
+        return text
     text = re.sub(r'((?:src|poster)=["\'])images/', r'\1../images/', text)
     text = re.sub(r'(url\(["\']?)images/', r'\1../images/', text)
     text = re.sub(r"((?:img|image|src)\s*:\s*['\"])images/", r"\1../images/", text)
     return text
 
 
-def rewrite_html_links(text: str) -> str:
+def rewrite_html_links(text: str, placement: str) -> str:
     def repl(match):
         quote, href = match.group(1), match.group(2)
         if re.match(r'^(?:https?:|mailto:|tel:|#|/|\.\./)', href):
+            return match.group(0)
+        if placement == "root" and href.startswith("en/"):
             return match.group(0)
         if ".html" not in href:
             return match.group(0)
@@ -999,10 +1048,14 @@ def page_title(text: str) -> str:
 
 
 def seo_description(lang: str, filename: str) -> str:
+    news_item = NEWS_BY_FILENAME.get(filename)
+    if news_item:
+        return news_item["summary"][lang]
     return SEO_DESCRIPTION.get(lang, {}).get(filename, DEFAULT_DESCRIPTION[lang])
 
 
 def seo_json_ld(lang: str, filename: str, title: str, description: str) -> str:
+    news_item = NEWS_BY_FILENAME.get(filename)
     data = {
         "@context": "https://schema.org",
         "@graph": [
@@ -1043,6 +1096,21 @@ def seo_json_ld(lang: str, filename: str, title: str, description: str) -> str:
             },
         ],
     }
+    if news_item:
+        data["@graph"].append(
+            {
+                "@type": "NewsArticle",
+                "@id": page_url(lang, filename) + "#article",
+                "headline": news_item["title"][lang],
+                "description": news_item["summary"][lang],
+                "datePublished": news_item["date"]["iso"],
+                "dateModified": news_item["date"]["iso"],
+                "image": [asset_url(news_item["image"]["detail"])],
+                "mainEntityOfPage": {"@id": page_url(lang, filename)},
+                "publisher": {"@id": f"{SITE_URL}/#organization"},
+                "inLanguage": "ko-KR" if lang == "ko" else "en",
+            }
+        )
     return json.dumps(data, ensure_ascii=False, separators=(",", ":"))
 
 
@@ -1054,7 +1122,7 @@ def inject_head(text: str, lang: str, filename: str) -> str:
         f'\n<link rel="canonical" href="{page_url(lang, filename)}">\n'
         f'<link rel="alternate" hreflang="en" href="{page_url("en", filename)}">\n'
         f'<link rel="alternate" hreflang="ko" href="{page_url("ko", filename)}">\n'
-        f'<link rel="alternate" hreflang="x-default" href="{page_url("en", filename)}">\n'
+        f'<link rel="alternate" hreflang="x-default" href="{page_url("ko", filename)}">\n'
         f'<meta name="description" content="{html.escape(description, quote=True)}">\n'
         f'<meta name="keywords" content="{html.escape(SEO_KEYWORDS[lang], quote=True)}">\n'
         f'<meta property="og:type" content="website">\n'
@@ -1106,16 +1174,108 @@ def ensure_source_pages():
         )
 
 
-def build_page(filename: str, lang: str) -> str:
+def build_page(filename: str, lang: str, placement: str) -> str:
     text = read_source(filename)
     if lang == "ko":
         text = translate_ko(text)
-    text = replace_layout_partials(text, lang, filename)
-    text = rewrite_assets(text)
-    text = rewrite_html_links(text)
+    text = replace_layout_partials(text, lang, filename, placement)
+    text = rewrite_assets(text, nested=placement != "root")
+    text = rewrite_html_links(text, placement)
     text = inject_head(text, lang, filename)
     text = inject_language_script(text)
     return text
+
+
+def news_items_sorted() -> list[dict]:
+    return sorted(NEWS_ITEMS, key=lambda item: item["date"]["iso"], reverse=True)
+
+
+def build_news_cards(lang: str, placement: str) -> str:
+    cards = []
+    for item in news_items_sorted():
+        filename = item["filename"]
+        image = asset_relative_path(item["image"]["card"], placement)
+        cards.append(
+            f"""    <a href="{html.escape(page_relative_href(filename, lang, placement))}" class="nc">
+      <div class="nc-img">
+        <div class="nc-img-in" style="background-image:url('{html.escape(image)}');"></div>
+        <span class="nc-cat">{html.escape(item["category"][lang])}</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-date">{html.escape(item["date"][lang])}</div>
+        <h3>{html.escape(item["title"][lang])}</h3>
+        <p>{html.escape(item["summary"][lang])}</p>
+      </div>
+    </a>"""
+        )
+    return "\n".join(cards)
+
+
+def build_news_listing(lang: str, placement: str) -> str:
+    text = build_page("news.html", lang, placement)
+    cards = build_news_cards(lang, placement)
+    replacement = f"""  <div class="news-grid r">
+{cards}
+  </div>
+</div></section>"""
+    text, count = re.subn(r'  <div class="news-grid r">[\s\S]*?</div>\s*</div></section>', replacement, text, count=1)
+    if count != 1:
+        raise ValueError("news.html: expected one news grid section")
+    return text
+
+
+def build_news_article(item: dict, lang: str, placement: str) -> str:
+    filename = item["filename"]
+    text = read_source("news-detail.html")
+    title = f'{item["title"][lang]} – NFD Korea'
+    text = re.sub(r"<title>.*?</title>", f"<title>{html.escape(title)}</title>", text, count=1, flags=re.I | re.S)
+    back_label = "뉴스로 돌아가기" if lang == "ko" else "Back to News"
+    news_label = "뉴스" if lang == "ko" else "News"
+    detail_image = asset_relative_path(item["image"]["detail"], placement)
+    paragraphs = "\n        ".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in item["body"][lang])
+    section = f"""<section class="sec" style="margin-top:70px;"><div class="sec-inner"><article class="nd-wrap r">
+  <a href="{html.escape(page_relative_href("news.html", lang, placement))}" class="nd-back">← {html.escape(back_label)}</a>
+  <div class="nd-meta"><span class="nd-cat">{html.escape(item["category"][lang])}</span><span class="nd-date">{html.escape(item["date"][lang])}</span></div>
+  <h1 class="nd-title">{html.escape(item["title"][lang])}</h1>
+  <p class="nd-sub">{html.escape(item["subtitle"][lang])}</p>
+  <div class="nd-img"><img src="{html.escape(detail_image)}" alt="{html.escape(item["title"][lang])}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.background='linear-gradient(135deg,#0D1A36,#243C73)';this.removeAttribute('src')"></div>
+  <div class="nd-body">
+        {paragraphs}
+  </div>
+</article></div></section>"""
+    text, count = re.subn(r'<section class="sec" style="margin-top:70px;">[\s\S]*?</section>', section, text, count=1)
+    if count != 1:
+        raise ValueError("news-detail.html: expected one article section")
+    text = re.sub(r'\n<script>\s*const NEWS = \{[\s\S]*?</script>', "", text, count=1)
+    text = text.replace('style="color:rgba(255,255,255,.75)">News</span>', f'style="color:rgba(255,255,255,.75)">{html.escape(news_label)}</span>')
+    text = replace_layout_partials(text, lang, filename, placement)
+    text = rewrite_assets(text, nested=placement != "root")
+    text = rewrite_html_links(text, placement)
+    text = inject_head(text, lang, filename)
+    text = inject_language_script(text)
+    return text
+
+
+def legacy_news_detail_page(lang: str, placement: str) -> str:
+    target = page_relative_href("news.html", lang, placement)
+    canonical = page_url(lang, "news.html")
+    title = "뉴스 – NFD Korea" if lang == "ko" else "News – NFD Korea"
+    message = "뉴스 목록으로 이동합니다." if lang == "ko" else "Redirecting to news."
+    return f"""<!DOCTYPE html>
+<html lang="{lang}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="{canonical}">
+<meta http-equiv="refresh" content="0; url={html.escape(target)}">
+<title>{html.escape(title)}</title>
+<script>location.replace("{html.escape(target)}" + location.search + location.hash);</script>
+</head>
+<body>
+<p>{html.escape(message)} <a href="{html.escape(target)}">{html.escape(title)}</a></p>
+</body>
+</html>
+"""
 
 
 def root_stub(filename: str, title: str) -> str:
@@ -1128,7 +1288,7 @@ def root_stub(filename: str, title: str) -> str:
 <meta name="robots" content="noindex,follow">
 <link rel="alternate" hreflang="en" href="{page_url("en", filename)}">
 <link rel="alternate" hreflang="ko" href="{page_url("ko", filename)}">
-<link rel="alternate" hreflang="x-default" href="{page_url("en", filename)}">
+<link rel="alternate" hreflang="x-default" href="{page_url("ko", filename)}">
 <title>{safe_title}</title>
 <script>
 (function(){{
@@ -1151,6 +1311,10 @@ def root_stub(filename: str, title: str) -> str:
 
 
 def page_url(lang: str, filename: str) -> str:
+    if lang == "ko":
+        if filename == "index.html":
+            return f"{SITE_URL}/" if SITE_URL else f"{SITE_BASE_PATH}/"
+        return f"{SITE_URL}/{filename}" if SITE_URL else f"{SITE_BASE_PATH}/{filename}"
     if SITE_URL:
         return f"{SITE_URL}/{lang}/{filename}"
     return f"{SITE_BASE_PATH}/{lang}/{filename}"
@@ -1158,14 +1322,14 @@ def page_url(lang: str, filename: str) -> str:
 
 def generate_sitemap() -> str:
     urls = []
-    for filename in PAGE_NAMES:
+    for filename in SITEMAP_PAGE_NAMES:
         for lang in ("en", "ko"):
             urls.append(
                 f"""  <url>
     <loc>{html.escape(page_url(lang, filename))}</loc>
     <xhtml:link rel="alternate" hreflang="en" href="{html.escape(page_url("en", filename))}" />
     <xhtml:link rel="alternate" hreflang="ko" href="{html.escape(page_url("ko", filename))}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="{html.escape(page_url("en", filename))}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{html.escape(page_url("ko", filename))}" />
   </url>"""
             )
     body = "\n".join(urls)
@@ -1208,14 +1372,32 @@ def main():
     for lang in ("en", "ko"):
         (OUTPUT_DIR / lang).mkdir(parents=True, exist_ok=True)
     for filename in PAGE_NAMES:
-        for lang in ("en", "ko"):
-            (OUTPUT_DIR / lang / filename).write_text(build_page(filename, lang), encoding="utf-8")
+        if filename in LEGACY_PAGE_NAMES:
+            continue
+        if filename == "news.html":
+            (OUTPUT_DIR / "en" / filename).write_text(build_news_listing("en", "en"), encoding="utf-8")
+            (OUTPUT_DIR / "ko" / filename).write_text(build_news_listing("ko", "ko"), encoding="utf-8")
+            continue
+        (OUTPUT_DIR / "en" / filename).write_text(build_page(filename, "en", "en"), encoding="utf-8")
+        (OUTPUT_DIR / "ko" / filename).write_text(build_page(filename, "ko", "ko"), encoding="utf-8")
 
     for filename in PAGE_NAMES:
-        source = read_source(filename)
-        m = re.search(r"<title>(.*?)</title>", source, re.I | re.S)
-        title = re.sub(r"\s+", " ", m.group(1)).strip() if m else f"NFD Korea - {filename}"
-        (OUTPUT_DIR / filename).write_text(root_stub(filename, title), encoding="utf-8")
+        if filename in LEGACY_PAGE_NAMES:
+            continue
+        if filename == "news.html":
+            (OUTPUT_DIR / filename).write_text(build_news_listing("ko", "root"), encoding="utf-8")
+            continue
+        (OUTPUT_DIR / filename).write_text(build_page(filename, "ko", "root"), encoding="utf-8")
+
+    for item in NEWS_ITEMS:
+        filename = item["filename"]
+        (OUTPUT_DIR / "en" / filename).write_text(build_news_article(item, "en", "en"), encoding="utf-8")
+        (OUTPUT_DIR / "ko" / filename).write_text(build_news_article(item, "ko", "ko"), encoding="utf-8")
+        (OUTPUT_DIR / filename).write_text(build_news_article(item, "ko", "root"), encoding="utf-8")
+
+    (OUTPUT_DIR / "en" / "news-detail.html").write_text(legacy_news_detail_page("en", "en"), encoding="utf-8")
+    (OUTPUT_DIR / "ko" / "news-detail.html").write_text(legacy_news_detail_page("ko", "ko"), encoding="utf-8")
+    (OUTPUT_DIR / "news-detail.html").write_text(legacy_news_detail_page("ko", "root"), encoding="utf-8")
 
     if (ROOT / "images").exists():
         shutil.copytree(ROOT / "images", OUTPUT_DIR / "images")
