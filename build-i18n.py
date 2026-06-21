@@ -1233,6 +1233,22 @@ def build_news_article(item: dict, lang: str, placement: str) -> str:
     news_label = "뉴스" if lang == "ko" else "News"
     detail_image = asset_relative_path(item["image"]["detail"], placement)
     paragraphs = "\n        ".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in item["body"][lang])
+    links_label = "관련 링크" if lang == "ko" else "Related Links"
+    links = item.get("links", [])
+    links_section = ""
+    if links:
+        link_items = "\n          ".join(
+            f'<li><a href="{html.escape(link["url"], quote=True)}" target="_blank" rel="noopener noreferrer">{html.escape(link["label"])} ↗</a></li>'
+            for link in links
+        )
+        links_section = f"""
+      <div class="nd-links">
+        <h2>{html.escape(links_label)}</h2>
+        <ul class="nd-link-list">
+          {link_items}
+        </ul>
+      </div>"""
+    article_body = paragraphs + links_section
     section = f"""<section class="sec" style="margin-top:70px;"><div class="sec-inner"><article class="nd-wrap r">
   <a href="{html.escape(page_relative_href("news.html", lang, placement))}" class="nd-back">← {html.escape(back_label)}</a>
   <div class="nd-meta"><span class="nd-cat">{html.escape(item["category"][lang])}</span><span class="nd-date">{html.escape(item["date"][lang])}</span></div>
@@ -1240,7 +1256,7 @@ def build_news_article(item: dict, lang: str, placement: str) -> str:
   <p class="nd-sub">{html.escape(item["subtitle"][lang])}</p>
   <div class="nd-img"><img src="{html.escape(detail_image)}" alt="{html.escape(item["title"][lang])}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.background='linear-gradient(135deg,#0D1A36,#243C73)';this.removeAttribute('src')"></div>
   <div class="nd-body">
-        {paragraphs}
+        {article_body}
   </div>
 </article></div></section>"""
     text, count = re.subn(r'<section class="sec" style="margin-top:70px;">[\s\S]*?</section>', section, text, count=1)

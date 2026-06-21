@@ -230,6 +230,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nfd.kr/services.html" />
   </url>
   <url>
+    <loc>https://www.nfd.kr/en/news-dangjin-300mw-ai-data-center.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nfd.kr/en/news-dangjin-300mw-ai-data-center.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.nfd.kr/news-dangjin-300mw-ai-data-center.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nfd.kr/news-dangjin-300mw-ai-data-center.html" />
+  </url>
+  <url>
+    <loc>https://www.nfd.kr/news-dangjin-300mw-ai-data-center.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nfd.kr/en/news-dangjin-300mw-ai-data-center.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.nfd.kr/news-dangjin-300mw-ai-data-center.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nfd.kr/news-dangjin-300mw-ai-data-center.html" />
+  </url>
+  <url>
     <loc>https://www.nfd.kr/en/news-project-development-update.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.nfd.kr/en/news-project-development-update.html" />
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.nfd.kr/news-project-development-update.html" />

@@ -1,5 +1,63 @@
 [
   {
+    "slug": "dangjin-300mw-ai-data-center",
+    "category": {
+      "en": "News",
+      "ko": "뉴스"
+    },
+    "date": {
+      "iso": "2026-06-16",
+      "en": "Jun 16, 2026",
+      "ko": "2026. 6. 16"
+    },
+    "image": {
+      "card": "images/remote/unsplash-photo-1558494949-ef010cbdcc31-w1800.webp",
+      "detail": "images/remote/unsplash-photo-1558494949-ef010cbdcc31-w1800.webp"
+    },
+    "title": {
+      "en": "NFD Korea Developing 300MW AI Data Center Campus in Dangjin, South Korea",
+      "ko": "엔에프디코리아, 당진에 300MW AI 데이터센터 캠퍼스 개발 추진"
+    },
+    "summary": {
+      "en": "NFD Korea is advancing a 300MW AI-ready data center campus in Dangjin with secured land, power agreements, and permits.",
+      "ko": "엔에프디코리아가 부지, 전력 계약, 인허가를 확보한 당진 300MW AI 데이터센터 캠퍼스 개발을 추진합니다."
+    },
+    "subtitle": {
+      "en": "The Dangjin campus is planned as a large-scale AI-ready development serving cloud, hyperscale, and high-density computing demand in Korea.",
+      "ko": "당진 캠퍼스는 국내 클라우드, 하이퍼스케일, 고밀도 컴퓨팅 수요에 대응하는 대규모 AI-ready 개발 사업으로 추진됩니다."
+    },
+    "body": {
+      "en": [
+        "NFD Korea is developing a 300MW AI-ready data center campus in Dangjin, South Korea, located in South Chungcheong Province within reach of the Seoul metropolitan market. The project has secured the site, power agreements, and construction permits, with the first phase targeting Ready-for-Service in the first quarter of 2028.",
+        "As AI and cloud infrastructure demand continues to expand, the Dangjin campus is designed to provide large-scale capacity with a phased development structure. The location within an established industrial complex is expected to support project stability while reducing risks commonly associated with power procurement, permitting, and community opposition.",
+        "The campus is being planned for high-density AI workloads, including liquid cooling capability and rack-level power density of up to 160kW, subject to tenant requirements. NFD Korea expects the development to draw interest from hyperscalers, cloud service providers, operators, and infrastructure investors seeking development-ready capacity in South Korea."
+      ],
+      "ko": [
+        "엔에프디코리아는 충청남도 당진에서 300MW 규모의 AI-ready 데이터센터 캠퍼스 개발을 추진하고 있습니다. 해당 부지는 수도권 시장 접근성을 갖춘 입지로, 부지 확보와 전력 계약, 건축 인허가가 완료되었으며 1단계는 2028년 1분기 Ready-for-Service를 목표로 하고 있습니다.",
+        "AI 및 클라우드 인프라 수요가 빠르게 확대되는 가운데, 당진 캠퍼스는 단계적 확장이 가능한 대규모 데이터센터 개발 사업으로 계획되고 있습니다. 산업단지 내 입지를 바탕으로 전력 조달, 인허가, 민원 리스크 등 데이터센터 개발의 주요 불확실성을 낮추고 안정적인 사업 추진 기반을 확보한 점이 특징입니다.",
+        "본 캠퍼스는 고밀도 AI 워크로드를 지원하기 위해 액체 냉각 역량과 랙당 최대 160kW 수준의 전력 밀도를 고려해 계획되고 있으며, 세부 사양은 테넌트 요구사항에 맞춰 최적화될 예정입니다. 엔에프디코리아는 이번 개발을 통해 국내외 하이퍼스케일러, 클라우드 서비스 제공자, 운영사 및 인프라 투자자의 수요에 대응해 나갈 계획입니다."
+      ]
+    },
+    "links": [
+      {
+        "label": "Mingtiandi",
+        "url": "https://www.mingtiandi.com/sponsored/nfd-korea-developing-a-300mw-data-center-campus/"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/feed/update/urn:li:activity:7472459742322442241/"
+      },
+      {
+        "label": "Facebook",
+        "url": "https://www.facebook.com/share/p/1EczLFw5tc/"
+      },
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/Mingtiandi/status/2066695041658298796?s=20"
+      }
+    ]
+  },
+  {
     "slug": "project-development-update",
     "category": {
       "en": "News",
