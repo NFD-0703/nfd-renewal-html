@@ -11,8 +11,8 @@
       "ko": "2026. 6. 16"
     },
     "image": {
-      "card": "images/remote/unsplash-photo-1558494949-ef010cbdcc31-w1800.webp",
-      "detail": "images/remote/unsplash-photo-1558494949-ef010cbdcc31-w1800.webp"
+      "card": "images/remote/nfd-dangjin-300mw-ai-data-center-campus-w800.webp",
+      "detail": "images/remote/nfd-dangjin-300mw-ai-data-center-campus.webp"
     },
     "title": {
       "en": "NFD Korea Developing 300MW AI Data Center Campus in Dangjin, South Korea",
@@ -42,6 +42,10 @@
       {
         "label": "Mingtiandi",
         "url": "https://www.mingtiandi.com/sponsored/nfd-korea-developing-a-300mw-data-center-campus/"
+      },
+      {
+        "label": "전자신문",
+        "url": "https://www.etnews.com/20260618000378"
       },
       {
         "label": "LinkedIn",
