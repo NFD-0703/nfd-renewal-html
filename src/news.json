@@ -44,7 +44,10 @@
         "url": "https://www.mingtiandi.com/sponsored/nfd-korea-developing-a-300mw-data-center-campus/"
       },
       {
-        "label": "전자신문",
+        "label": {
+          "en": "etnews",
+          "ko": "전자신문"
+        },
         "url": "https://www.etnews.com/20260618000378"
       },
       {

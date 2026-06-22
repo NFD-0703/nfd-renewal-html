@@ -1224,6 +1224,13 @@ def build_news_listing(lang: str, placement: str) -> str:
     return text
 
 
+def link_label(link: dict, lang: str) -> str:
+    label = link["label"]
+    if isinstance(label, dict):
+        return label.get(lang) or label.get("en") or next(iter(label.values()))
+    return label
+
+
 def build_news_article(item: dict, lang: str, placement: str) -> str:
     filename = item["filename"]
     text = read_source("news-detail.html")
@@ -1238,7 +1245,7 @@ def build_news_article(item: dict, lang: str, placement: str) -> str:
     links_section = ""
     if links:
         link_items = "\n          ".join(
-            f'<li><a href="{html.escape(link["url"], quote=True)}" target="_blank" rel="noopener noreferrer">{html.escape(link["label"])} ↗</a></li>'
+            f'<li><a href="{html.escape(link["url"], quote=True)}" target="_blank" rel="noopener noreferrer">{html.escape(link_label(link, lang))} ↗</a></li>'
             for link in links
         )
         links_section = f"""
