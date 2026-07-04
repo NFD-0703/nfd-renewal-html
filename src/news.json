@@ -1,5 +1,54 @@
 [
   {
+    "slug": "ceo-interview-ai-data-center-competitiveness",
+    "category": {
+      "en": "News",
+      "ko": "뉴스"
+    },
+    "date": {
+      "iso": "2026-07-01",
+      "en": "Jul 1, 2026",
+      "ko": "2026. 7. 1"
+    },
+    "image": {
+      "card": "images/remote/ai-data-center-high-density-infrastructure-w800.webp",
+      "detail": "images/remote/ai-data-center-high-density-infrastructure.webp"
+    },
+    "title": {
+      "en": "NFD Korea CEO Interview: \"AI Data Center Competitiveness Lies in Speed of Supply and High-Density Infrastructure\"",
+      "ko": "최재우 NFD코리아 대표 \"AI 데이터센터 경쟁력은 빠른 공급과 고밀도 인프라\""
+    },
+    "summary": {
+      "en": "NFD Korea CEO Jae Woo Choi said AI data center competitiveness is shifting toward supply speed and high-density infrastructure.",
+      "ko": "최재우 NFD코리아 대표가 AI 데이터센터 경쟁력이 공급 속도와 고밀도 인프라로 이동하고 있다고 설명했습니다."
+    },
+    "subtitle": {
+      "en": "In an Electronic Times interview, Jae Woo Choi discussed why secured land, power, permits, and high-density design matter for AI data center delivery.",
+      "ko": "최재우 대표는 전자신문 인터뷰에서 부지, 전력, 인허가 확보와 고밀도 설계가 AI 데이터센터 공급 경쟁력의 핵심이라고 설명했습니다."
+    },
+    "body": {
+      "en": [
+        "NFD Korea CEO Jae Woo Choi, in an interview with Electronic Times, South Korea's leading IT publication, said that the competitive edge in AI data center development has shifted from power procurement to speed of supply.",
+        "Drawing on his experience at AWS and Brookfield-affiliated DCI, Choi highlighted that the Dangjin 300MW AI data center campus has secured land, power, and all necessary permits — significantly reducing development risk.",
+        "Located within an established industrial complex, the campus features liquid cooling and up to 160kW per rack to meet high-density AI workload demands. Choi also expressed confidence in South Korea's potential to emerge as Asia's premier AI data center hub."
+      ],
+      "ko": [
+        "NFD코리아 최재우 대표는 전자신문과의 인터뷰에서 AI 데이터센터 시장의 경쟁력이 전력 확보를 넘어 공급 속도로 이동하고 있다고 진단했다.",
+        "AWS와 브룩필드 계열 DCI를 거친 최 대표는 당진 300MW AI 데이터센터 캠퍼스가 부지·전력·인허가를 모두 확보한 사업지라는 점을 핵심 경쟁력으로 꼽았다.",
+        "산업단지 내 입지로 민원 리스크가 낮고, 액체냉각과 랙당 최대 160kW의 고밀도 전력 환경을 갖춰 AI 수요에 신속하게 대응할 수 있다고 설명했다. 한국이 아시아 AI 데이터센터 거점으로 성장할 잠재력이 충분하다는 전망도 내놨다."
+      ]
+    },
+    "links": [
+      {
+        "label": {
+          "en": "Electronic Times article",
+          "ko": "전자신문 기사"
+        },
+        "url": "https://www.etnews.com/20260701000143"
+      }
+    ]
+  },
+  {
     "slug": "dangjin-300mw-ai-data-center",
     "category": {
       "en": "News",
