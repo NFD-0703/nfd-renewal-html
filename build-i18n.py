@@ -12,6 +12,24 @@ OUTPUT_DIR = ROOT / "docs"
 PUBLIC_DIR = ROOT / "public"
 NEWS_DATA_PATH = ROOT / "src" / "news.json"
 
+GOOGLE_ADS_TAG = """<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18304743928"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-18304743928');
+</script>"""
+
+GOOGLE_ADS_CONVERSION_EVENT = """<!-- Event snippet for 리드 양식 제출 conversion page -->
+<script>
+gtag('event', 'conversion', {
+  'send_to': 'AW-18304743928/La8ECK_a8s8cEPjzsJhE',
+  'value': 1.0,
+  'currency': 'KRW'
+});
+</script>"""
+
 
 def discover_page_names() -> list[str]:
     if SOURCE_DIR.exists():
@@ -1146,7 +1164,10 @@ def inject_head(text: str, lang: str, filename: str) -> str:
         f'<script type="application/ld+json">{seo_json_ld(lang, filename, title, description)}</script>\n'
     )
     text = re.sub(r'(<meta name="viewport"[^>]*>)', r'\1' + meta, text, count=1)
-    text = text.replace("</head>", LANG_CSS + "\n</head>", 1)
+    google_ads = GOOGLE_ADS_TAG
+    if filename == "contact.html":
+        google_ads = GOOGLE_ADS_CONVERSION_EVENT + "\n" + google_ads
+    text = text.replace("</head>", LANG_CSS + "\n" + google_ads + "\n</head>", 1)
     return text
 
 
@@ -1305,6 +1326,7 @@ def legacy_news_detail_page(lang: str, placement: str) -> str:
 <meta http-equiv="refresh" content="0; url={html.escape(target)}">
 <title>{html.escape(title)}</title>
 <script>location.replace("{html.escape(target)}" + location.search + location.hash);</script>
+{GOOGLE_ADS_TAG}
 </head>
 <body>
 <p>{html.escape(message)} <a href="{html.escape(target)}">{html.escape(title)}</a></p>
