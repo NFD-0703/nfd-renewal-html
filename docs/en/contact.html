@@ -376,14 +376,6 @@ html[lang="ko"] .fg label{
 }
 </style>
 
-<!-- Event snippet for 리드 양식 제출 conversion page -->
-<script>
-gtag('event', 'conversion', {
-  'send_to': 'AW-18304743928/La8ECK_a8s8cEPjzsJhE',
-  'value': 1.0,
-  'currency': 'KRW'
-});
-</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18304743928"></script>
 <script>
@@ -569,6 +561,13 @@ if(contactForm){
         body:new FormData(contactForm)
       });
       if(response.ok){
+        if(typeof gtag==='function'){
+          gtag('event','conversion',{
+            'send_to':'AW-18304743928/La8ECK_a8s8cEPjzsJhE',
+            'value':1.0,
+            'currency':'KRW'
+          });
+        }
         alert(labels.success);
         contactForm.reset();
       }else{

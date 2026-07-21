@@ -370,6 +370,13 @@ if(contactForm){
         body:new FormData(contactForm)
       });
       if(response.ok){
+        if(typeof gtag==='function'){
+          gtag('event','conversion',{
+            'send_to':'AW-18304743928/La8ECK_a8s8cEPjzsJhE',
+            'value':1.0,
+            'currency':'KRW'
+          });
+        }
         alert(labels.success);
         contactForm.reset();
       }else{

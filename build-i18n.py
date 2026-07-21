@@ -21,16 +21,6 @@ gtag('js', new Date());
 gtag('config', 'AW-18304743928');
 </script>"""
 
-GOOGLE_ADS_CONVERSION_EVENT = """<!-- Event snippet for 리드 양식 제출 conversion page -->
-<script>
-gtag('event', 'conversion', {
-  'send_to': 'AW-18304743928/La8ECK_a8s8cEPjzsJhE',
-  'value': 1.0,
-  'currency': 'KRW'
-});
-</script>"""
-
-
 def discover_page_names() -> list[str]:
     if SOURCE_DIR.exists():
         names = sorted(path.name for path in SOURCE_DIR.glob("*.html") if path.name != "index_en.html")
@@ -1164,10 +1154,7 @@ def inject_head(text: str, lang: str, filename: str) -> str:
         f'<script type="application/ld+json">{seo_json_ld(lang, filename, title, description)}</script>\n'
     )
     text = re.sub(r'(<meta name="viewport"[^>]*>)', r'\1' + meta, text, count=1)
-    google_ads = GOOGLE_ADS_TAG
-    if filename == "contact.html":
-        google_ads = GOOGLE_ADS_CONVERSION_EVENT + "\n" + google_ads
-    text = text.replace("</head>", LANG_CSS + "\n" + google_ads + "\n</head>", 1)
+    text = text.replace("</head>", LANG_CSS + "\n" + GOOGLE_ADS_TAG + "\n</head>", 1)
     return text
 
 
