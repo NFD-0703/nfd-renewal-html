@@ -1,5 +1,56 @@
 [
   {
+    "slug": "dangjin-mou-100mw-20260909",
+    "category": {
+      "en": "News",
+      "ko": "뉴스"
+    },
+    "date": {
+      "iso": "2026-09-09",
+      "en": "Sep 9, 2026",
+      "ko": "2026. 9. 9"
+    },
+    "image": {
+      "card": "images/remote/dangjin-mou-100mw-20260909-w800.webp",
+      "detail": "images/remote/dangjin-mou-100mw-20260909.webp"
+    },
+    "title": {
+      "en": "NFD Korea and EFD Sign MOU with Chungnam Province and Dangjin City for 100MW AI Data Center Cluster",
+      "ko": "충남·당진시·NFD·EFD, AI 데이터센터 클러스터 100MW 조성 MOU 체결"
+    },
+    "summary": {
+      "en": "NFD Korea and EFD signed an MOU with Chungnam Province and Dangjin City to develop the 100MW Building C of the Dangjin AI data center cluster.",
+      "ko": "NFD코리아와 EFD가 충청남도·당진시와 당진 AI 데이터센터 클러스터 C동 100MW 조성을 위한 업무협약을 체결했습니다."
+    },
+    "subtitle": {
+      "en": "The agreement advances the final 100MW component of the 300MW first-phase AI data center cluster in the Songsan 2 General Industrial Complex.",
+      "ko": "이번 협약으로 송산2일반산업단지에 조성되는 300MW 규모 AI 데이터센터 클러스터 1단계의 마지막 100MW 사업이 본격화됩니다."
+    },
+    "body": {
+      "en": [
+        "Chungnam Province, Dangjin City, NFD Korea, and EFD signed a memorandum of understanding on September 9 at the Chungnam Provincial Government Office to develop the 100MW Building C of the AI data center cluster in the Songsan 2 General Industrial Complex in Dangjin.",
+        "The agreement establishes the project framework for Building C and completes the lineup for the three-building, 300MW first phase. Buildings A and B account for 200MW, with pre-construction work already underway for Building A and construction scheduled to begin in November. Transformers and other core power infrastructure are also being secured for phased delivery between 2027 and 2028.",
+        "The cluster is being advanced by a private investment consortium of six specialist companies spanning land, construction, electrical equipment, finance, and operations. The project partners are targeting sequential completion of the full 300MW first phase by the third quarter of 2028 while also exploring future expansion with Chungnam Province and Dangjin City.",
+        "Alongside the data center development, the partners plan to establish a regional innovation ecosystem encompassing operations training, joint research in power management, cooling efficiency and AI infrastructure, and startup incubation. NFD Korea expects the campus to provide the scale and delivery speed required by global hyperscalers and to support Dangjin's growth as a major AI infrastructure hub in Korea. Photo courtesy of Dangjin City."
+      ],
+      "ko": [
+        "충청남도와 당진시, NFD코리아, EFD는 9월 9일 충남도청에서 당진 송산2일반산업단지 내 AI 데이터센터 클러스터 C동 100MW 조성을 위한 업무협약을 체결했습니다.",
+        "이번 협약으로 C동의 사업 추진 체계가 확정되면서 A·B·C 3개 동으로 구성된 300MW 규모 1단계 사업의 구성이 완성됐습니다. A·B동은 총 200MW 규모이며, A동은 현재 프리콘을 진행하고 11월 착공을 준비하고 있습니다. 핵심 전력설비도 2027년부터 2028년까지 단계적으로 공급될 예정입니다.",
+        "클러스터는 토지, 시공, 전력기기, 금융, 운영 분야의 6개 전문기업이 참여하는 민간투자 컨소시엄 방식으로 추진됩니다. 사업 참여사들은 2028년 3분기까지 300MW 규모 1단계 전 구간의 순차 준공을 목표로 하며, 충청남도 및 당진시와 후속 확장 방안도 협의할 계획입니다.",
+        "데이터센터 개발과 함께 운영기술 교육, 전력관리·냉각효율·AI 인프라 공동연구, 스타트업 육성 등을 포함한 지역 혁신 생태계 조성도 추진됩니다. NFD코리아는 이번 캠퍼스가 글로벌 하이퍼스케일러가 요구하는 규모와 공급 속도를 갖추고 당진이 국내 AI 인프라 거점으로 성장하는 기반이 될 것으로 기대하고 있습니다. 사진 제공: 당진시."
+      ]
+    },
+    "links": [
+      {
+        "label": {
+          "en": "Daejeon Ilbo article",
+          "ko": "대전일보 기사"
+        },
+        "url": "https://v.daum.net/v/20260909094949208"
+      }
+    ]
+  },
+  {
     "slug": "ceo-interview-ai-data-center-competitiveness",
     "category": {
       "en": "News",
