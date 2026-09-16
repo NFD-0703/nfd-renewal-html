@@ -1,5 +1,61 @@
 [
   {
+    "slug": "dangjin-groundbreaking-300mw-20260914",
+    "category": {
+      "en": "News",
+      "ko": "뉴스"
+    },
+    "date": {
+      "iso": "2026-09-14",
+      "en": "Sep 14, 2026",
+      "ko": "2026. 9. 14"
+    },
+    "image": {
+      "card": "images/remote/dangjin-groundbreaking-300mw-20260914-w800.webp",
+      "detail": "images/remote/dangjin-groundbreaking-300mw-20260914.webp"
+    },
+    "title": {
+      "en": "NFD Korea Breaks Ground on 300MW AI Data Center Campus in Dangjin",
+      "ko": "NFD Korea, 당진 300MW AI 데이터센터 캠퍼스 착공"
+    },
+    "summary": {
+      "en": "NFD Korea's 300MW Dangjin AI data center campus has entered full-scale development, with construction of Building A scheduled for early November 2026.",
+      "ko": "NFD코리아의 당진 300MW AI 데이터센터 캠퍼스가 본격적인 개발 단계에 들어섰으며, A동은 2026년 11월 초 착공 예정입니다."
+    },
+    "subtitle": {
+      "en": "The 200MW first segment has secured its site, power agreement, permits, and general contractor; the additional 100MW segment is in the permitting process.",
+      "ko": "첫 200MW 구간은 부지·전력 계약·인허가·시공사를 확보했으며, 추가 100MW 구간은 인허가를 진행 중입니다."
+    },
+    "body": {
+      "en": [
+        "NFD Korea's 300MW AI data center campus in the Songsan 2 General Industrial Complex in Dangjin has moved into full-scale development. Site acquisition, a power supply agreement, and building permits for the initial 200MW segment were completed, and DL E&C was selected as general contractor. Pre-construction work is underway on Building A, with construction scheduled to begin in early November 2026.",
+        "The campus comprises Buildings A and B, totaling 200MW, and an additional 100MW Building C. Following the September 9 agreement among Chungcheongnam-do Province, Dangjin City, NFD Korea, and EFD, permitting for Building C is underway with completion targeted for December 2026. NFD Korea has secured a 300MW power supply agreement with KEPCO, while LS Electric is scheduled to deliver key transformers in stages from 2027 to 2028.",
+        "About 90km southwest of Seoul, the campus is being designed for high-density AI workloads with liquid cooling and up to 160kW of power per rack. Building A is targeting Ready-for-Service in the first quarter of 2028, with Buildings B and C also targeting service during 2028. Final specifications will be set according to tenant requirements."
+      ],
+      "ko": [
+        "NFD코리아가 충청남도 당진시 송산2일반산업단지에서 추진하는 300MW 규모 AI 데이터센터 캠퍼스가 본격적인 개발 단계에 들어섰습니다. 첫 200MW 구간의 부지 매입, 전력 공급 계약, 건축 인허가를 완료하고 DL이앤씨를 시공사로 선정했습니다. A동은 현재 프리콘을 진행 중이며 2026년 11월 초 착공을 예정하고 있습니다.",
+        "캠퍼스는 총 200MW 규모의 A·B동과 추가 100MW 규모의 C동으로 구성됩니다. 9월 9일 충청남도·당진시·NFD코리아·EFD의 협약 이후 C동 인허가가 진행 중이며, 2026년 12월 완료를 목표로 합니다. NFD코리아는 한국전력공사와 300MW 전력 공급 계약을 확보했고, LS일렉트릭은 핵심 변압기를 2027년부터 2028년까지 단계적으로 공급할 예정입니다.",
+        "서울에서 남서쪽으로 약 90km 떨어진 당진 캠퍼스는 액체 냉각과 랙당 최대 160kW 전력 공급을 고려해 고밀도 AI 워크로드에 맞춰 설계되고 있습니다. A동은 2028년 1분기 서비스 개시를 목표로 하며, B·C동 역시 2028년 내 서비스 개시를 목표로 합니다. 최종 사양은 입주 고객의 요구에 따라 확정될 예정입니다."
+      ]
+    },
+    "links": [
+      {
+        "label": {
+          "en": "Mingtiandi article",
+          "ko": "Mingtiandi 기사"
+        },
+        "url": "https://www.mingtiandi.com/sponsored/nfd-korea-breaks-ground-on-300mw-ai-data-center-campus-in-danjin/"
+      },
+      {
+        "label": {
+          "en": "Electronic Times article",
+          "ko": "전자신문 기사"
+        },
+        "url": "https://www.etnews.com/20260909000346"
+      }
+    ]
+  },
+  {
     "slug": "dangjin-mou-100mw-20260909",
     "category": {
       "en": "News",

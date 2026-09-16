@@ -156,6 +156,7 @@ CAREERS_PAGES = {
     "careers-csa-engineer.html",
     "careers-estate-development.html",
     "careers-mechanical-electrical.html",
+    "careers-electrical-engineer.html",
 }
 
 SEO_DESCRIPTION = {
@@ -611,6 +612,12 @@ KO_TEXT = {
     "Senior CSA engineer": "시니어 CSA 엔지니어",
     "Mechanical Engineer": "기계 엔지니어",
     "Electrical Engineer": "전기 엔지니어",
+    "Data Center Mechanical Engineer (Senior)": "데이터센터 기계 엔지니어 (시니어)",
+    "Senior Data Center Mechanical Engineer · Experienced": "데이터센터 시니어 기계 엔지니어 · 경력",
+    "Data Center Electrical Engineer (Senior)": "데이터센터 전기 엔지니어 (시니어)",
+    "Senior Data Center Electrical Engineer · Experienced": "데이터센터 시니어 전기 엔지니어 · 경력",
+    "Lead design review and construction oversight of data center mechanical systems from Technical DD through commissioning": "Technical DD부터 시운전까지 데이터센터 기계설비의 설계 검토와 시공 감리를 주도합니다.",
+    "Lead design review and construction oversight of data center electrical systems from Technical DD through commissioning": "Technical DD부터 시운전까지 데이터센터 전기 시스템의 설계 검토와 시공 감리를 주도합니다.",
     "Land deal sourcing, structuring, due diligence, and negotiation of key terms and transaction documents": "토지 거래 발굴, 구조화, 실사 및 주요 조건·거래 문서 협상",
     "Manage data center projects from due diligence through design development, permitting, construction and turnover.": "실사부터 설계 개발, 인허가, 시공, 인계까지 데이터센터 프로젝트를 관리합니다.",
     "Create and review Civil, Structural, and Architectural design for data center facilities": "데이터센터 시설의 토목, 구조, 건축 설계를 작성하고 검토합니다.",
@@ -679,6 +686,27 @@ KO_TEXT = {
     "Experience in project management roles (PM or CM), including scheduling, budgeting, and vendor coordination": "일정, 예산, 벤더 조율을 포함한 PM 또는 CM 역할 경험",
     "Hands-on experience in data center construction and commissioning (Cx)": "데이터센터 시공 및 커미셔닝(Cx) 실무 경험",
     "Strong English communication skills for technical discussions, documentation, and client interaction": "기술 논의, 문서 작성, 고객 커뮤니케이션을 위한 영어 소통 능력",
+    "We are seeking an experienced Mechanical Engineer to lead design review and construction oversight of data center mechanical systems, including HVAC, piping, cooling, and fire protection. This role spans the full project lifecycle — from pre-construction Technical Due Diligence and design value engineering through commissioning — and includes technical collaboration on airflow, thermal distribution, and cooling performance based on a foundational understanding of Computational Fluid Dynamics (CFD), as well as coordination with domestic and international CSPs and clients.": "데이터센터 기계설비(HVAC, 배관, 냉각, 소방 등)의 설계 검토와 시공 감리를 주도할 기계 엔지니어를 찾습니다. 착공 전 Technical DD와 설계 VE부터 시운전(Commissioning)까지 프로젝트 전 단계를 책임지며, 전산유체역학(CFD) 기본 개념을 바탕으로 데이터센터 내 공기 흐름·열 분포·냉각 성능 관련 기술 협업 및 국내외 CSP/발주처와의 기술 협의를 담당하는 역할입니다.",
+    "Design and review of data center mechanical systems (HVAC, piping, cooling, fire protection, etc.)": "데이터센터 기계설비(HVAC, 배관, 냉각, 소방 등) 설계·검토",
+    "Pre-construction Technical DD, design VE, and CAPEX optimization": "착공 전 Technical DD, 설계 VE, CAPEX 최적화",
+    "Mechanical construction process management and quality control during the construction phase": "시공 단계 기계 공정 관리 및 품질 관리",
+    "Commissioning planning and on-site support": "시운전(Commissioning) 계획 수립 및 현장 지원",
+    "Technical coordination with domestic and international CSPs/clients": "국내외 CSP/발주처 기술 협의 대응",
+    "Foundational understanding of Computational Fluid Dynamics (CFD) as applied to airflow, thermal distribution, and cooling performance in data centers, and technical collaboration with CFD service providers": "데이터센터 내 공기 흐름·열 분포·냉각 성능에 적용되는 전산유체역학(CFD) 기본 개념 이해 및 CFD 수행업체와의 기술 협업",
+    "7–15 years of relevant experience": "경력 7년 이상 ~ 15년 이하",
+    "Bachelor's degree or higher in Mechanical Engineering or a related field": "기계공학 또는 관련 전공 학사 이상",
+    "Hands-on experience in HVAC and piping design/construction": "HVAC 및 배관 설계·시공 직접 수행 경험",
+    "Experience in mechanical engineering for data centers or large-scale infrastructure (e.g., semiconductor cleanrooms)": "데이터센터·대형 인프라(반도체 클린룸 등) 기계 분야 유경험자",
+    "Experience with BIM tools (Revit, AutoCAD, Navisworks)": "BIM 도구(Revit, AutoCAD, Navisworks) 활용 경험",
+    "PM/CM experience (schedule, budget, and vendor management)": "PM/CM 경험(일정·예산·협력사 관리)",
+    "Ability to write technical documents and communicate in English": "영어 기술 문서 작성 및 커뮤니케이션 가능",
+    "Willingness and ability to travel overseas": "해외 출장 가능자",
+    "We are seeking an experienced Electrical Engineer to lead design review and construction oversight of data center electrical systems, including substations, UPS, generators, and switchgear. This role spans the full project lifecycle — from pre-construction Technical Due Diligence and design value engineering through commissioning — and requires close technical coordination with domestic and international CSPs and clients.": "데이터센터 전기 시스템(수변전, UPS, 발전기, 배전반 등)의 설계 검토와 시공 감리를 주도할 전기 엔지니어를 찾습니다. 착공 전 Technical DD와 설계 VE부터 시운전(Commissioning)까지 프로젝트 전 단계에 걸쳐 기술적 완성도를 책임지며, 국내외 CSP 및 발주처와의 기술 협의를 담당하는 역할입니다.",
+    "Design and review of data center electrical systems (substations, UPS, generators, switchgear, etc.)": "데이터센터 전기 시스템 설계 및 검토(수변전, UPS, 발전기, 배전반 등)",
+    "Electrical construction supervision and quality control during the construction phase": "시공 단계 전기 공정 감리 및 품질 관리",
+    "Bachelor's degree or higher in Electrical Engineering or a related field": "전기공학 또는 관련 전공 학사 이상",
+    "Experience in the electrical field for data centers or large-scale infrastructure": "데이터센터, 대형 인프라 전기 분야 유경험",
+    "Hands-on experience with ETAP power modeling and fault analysis": "ETAP 전력 모델링, 고장 분석 실무 경험",
     "01 — Value": "01 — 가치",
     "02 — Value": "02 — 가치",
     "03 — Value": "03 — 가치",
@@ -1157,12 +1185,12 @@ def inject_head(text: str, lang: str, filename: str) -> str:
         f'<script type="application/ld+json">{seo_json_ld(lang, filename, title, description)}</script>\n'
     )
     text = re.sub(r'(<meta name="viewport"[^>]*>)', r'\1' + meta, text, count=1)
-    text = text.replace("</head>", LANG_CSS + "\n" + GOOGLE_ADS_TAG + "\n</head>", 1)
+    text = re.sub(r"[ \t]*</head>", LANG_CSS + "\n" + GOOGLE_ADS_TAG + "\n</head>", text, count=1)
     return text
 
 
 def inject_language_script(text: str) -> str:
-    text = text.replace("</body>", LANG_SCRIPT + "\n</body>", 1)
+    text = re.sub(r"[ \t]*</body>", LANG_SCRIPT + "\n</body>", text, count=1)
     return text
 
 
